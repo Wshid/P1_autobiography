@@ -68,6 +68,7 @@ body {
 .marketing .col-lg-4 {
   margin-bottom: 20px;
   text-align: center;
+  cursor: pointer; 
 }
 .marketing h2 {
   font-weight: normal;
@@ -93,7 +94,7 @@ body {
 }
 
 
-/* RESPONSIVE CSS
+/* RESPONSIVE CSS : 반응형 웹에서 사용할 속성
 -------------------------------------------------- */
 
 @media (min-width: 768px) {
@@ -139,29 +140,56 @@ body {
 
 .row .col-lg-4.box_active{
   box-shadow: 0px 0px 10px #000;
+  background-image:linear-gradient(45deg,rgba(204,153,204,.5) 0,rgba(0,0,0,.0001) 100%);;
   /* box-shadow : [inset] [h-shadow] [v-shadow] [blur] [spread] */
 }
 
+
+/* fixed header*/
 .fixed-header{
   opacity:0.9;
-  top:-60px;
+  top:-100px;
   position:fixed;
   z-index:20;
-  -webkit-transition: top 0.25s; /* chrome에 적용하기 위해 벤더 접두어 사용 */
+  -webkit-transition: top 0.25s; /*chrome에 적용하기 위해 벤더 접두어 사용 */
           transition: top 0.25s;
 }
 
 .fixed-header.visible{
-  top:0;
+  top:5px;
 }
 
+.fixed-header .navbar .container{
+  width:auto;
+}
+
+.fixed-header > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.fixed-header .navbar {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.fixed-header .navbar .container {
+  width: auto;
+}
+
+
 /* back-to-top */
+
+.buttonWrapper{
+  width:50px;
+  height:50px;
+  margin:0 auto; /* 가운데 정렬 적용 완료 */
+}
+
 .back-to-top {
     background-color: rgb(240, 240, 240);
+    border-radius:25px 25px;
     border-width: 0;
     cursor: pointer; /* hover시 link위 hover 효과로 커서가 바뀜 */
     display: block;
-    margin: 0;
     padding: 16px;
     width: 100%;
 }
@@ -173,16 +201,80 @@ body {
     width: 26px;
 }
 .back-to-top .label:before {
-    content: url(img/sprites.png);
+    content: url(../img/arrow.png);
     display: inline-block;
     font-size: 0;
     line-height: 0;
-    margin-left: -40px;
+    margin-left:-10px;
+    margin-top:-5px;
 }
 
 .no-js .back-to-top {
     display: none;
 }
 
+/*
+@media (min-width: 1200px){  @를 사용하여 반응형 웹 구성을 하면 될 듯 
+  .fixed-header .container {
+      width: 1180px;
+      text-align:center;
+      margin-left:10%;
+      margin-right:10%;
+  }
+}
+*/
+
+.visible .navbar{
+  border-radius:4px;
+}
+
+
 /* navbar 라는 id 충돌때문에 제대로 변경이 일어나지 않음 */
 /* dropdown은 class로 관리하기 때문에 문제가 일어나지 않음 */
+
+
+/* carousel gradient 변경 */
+.carousel-control.left{
+    background-image: -webkit-linear-gradient(left,rgba(204,000,255,.5) 0,rgba(0,0,0,.0001) 100%);
+    background-image: -o-linear-gradient(left,rgba(204,000,255,.5) 0,rgba(0,0,0,.0001) 100%);
+    background-image: -webkit-gradient(linear,left top,right top,from(rgba(204,000,255,.5)),to(rgba(0,0,0,.0001)));
+    background-image: linear-gradient(to right,rgba(204,000,255,.5) 0,rgba(0,0,0,.0001) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+    background-repeat: repeat-x;  
+}
+.carousel-control.right{
+    background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0001) 0, rgba(204,000,255,.5) 100%);
+    background-image: -o-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(204,000,255,.5) 100%);
+    background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0001),to(rgba(204,000,255,.5))));
+    background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(204,000,255,.5) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+    background-repeat: repeat-x;  
+}
+
+
+.signinCheck{
+  margin:5px 10px 0 0; /* padding이 아닌 margin을 조정하면 됨 */
+  float:right;
+}
+
+.signinName{
+  margin-right:10px;
+}
+
+
+.login_out{
+  font-size:10pt;
+  /*height:10%;*/
+}
+
+.btn-theme {
+    color: #fff;
+    background-color: #CF36BB;
+    border-color: #CF36BB;
+}
+
+
+/*
+204,000,255 진보라색
+204,000,255 연보라색
+*/
