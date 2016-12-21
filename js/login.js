@@ -1,5 +1,7 @@
 $(function(){
     //$bgWrapper=$('.aa'),
+    $('[data-toggle="tooltip"]').tooltip() // tooltip 사용하기 위해 삽입
+    $('[data-toggle="popover"]').popover() // pop over 사용하기 위해 삽입
     /* 창 크기에 맞게 배경 요소의 크기 조정 */
     var $window=$(window),
         $container=$('bg_wrapper > .container');
@@ -11,9 +13,10 @@ $(function(){
         //$bgWrapper.height($(window).height());
         //$bgWrapper.width($(window).width());
         $('body').css("background-size", setSize);
-        $container.css("margin-top",(windowHeight*0.3)+"px"); //이거 구현되는지 확인해야함
+        //$container.css("margin-top",(windowHeight*0.3)+"px"); //이거 구현되는지 확인해야함
     });
     
     $window.trigger('resize');
+
     
 });

@@ -6,6 +6,9 @@ body {
   background-image:url('../img/bg_edit.png');
 }
 
+.bg_wrapper > .container{
+  margin-top:20%;
+}
 
 .form-signin {
   max-width: 330px;
@@ -51,3 +54,29 @@ body {
   width:100%;
   height:100%;
 }
+
+/* modal*/
+.signupInfo{
+  width:40%;
+  display:inline;
+  margin:15px 0;
+}
+
+.signup_subtext{
+  margin-bottom:20px;
+}
+
+#checkButton{
+  margin:0 20px;
+}
+
+.label_signup{
+  display:inline-block;
+  width:20%;
+  /* inline : 텍스트 단위(속성 지정 불가)
+   * block : 블록 단위(width 등의 속성 지정 가능)
+   * inline-block : 텍스트 블록 단위
+     http://hangru1106.blog.me/220156449509 참고
+   */
+}
+

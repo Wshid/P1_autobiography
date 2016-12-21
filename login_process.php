@@ -4,11 +4,11 @@
     //echo $_POST["inputPassword"];
     
     require("lib/db.php");
-    require("config/user_config.php");
+    require("config/config.php");
     /* 왜 이렇게 하면 안될까? */
-    //$user_conn=db_init($config["host"],$config["duser"],$config["dpw"],$config["dname"]);
-    $user_conn=mysqli_connect("localhost", "root", "admin");
-    mysqli_select_db($user_conn,"autobiography");
+    $conn=db_init($config["host"],$config["duser"],$config["dpw"],$config["dname"]);
+    //$conn=mysqli_connect("localhost", "root", "admin");
+    //mysqli_select_db($conn,"autobiography");
     //echo($_POST['email']);
     //echo($_POST['password']);
     //$email=mysqli_real_escape_string($conn, $_POST['email']);
@@ -26,7 +26,7 @@
     if($email!=null && $password!=null){
         $sql="SELECT * FROM user WHERE email='".$email."'"; // id 검사
         $user_sql=$sql." AND password='".$password."'"; // pw 검사, SQL Injection 방지
-        $result=mysqli_query($user_conn, $user_sql);
+        $result=mysqli_query($conn, $user_sql);
         //echo('<script>alert("'.$email.'");</script>');
         if($result->num_rows==0){ /* 검사 결과 일치하는 id가 없을 때 */
             echo('<script>alert("Please input correct id or password");

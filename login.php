@@ -1,14 +1,4 @@
-
 <!DOCTYPE html>
-<?php
-  require("lib/db.php");
-  require("config/user_config.php");
-  //$conn=mysqli_connect('localhost', 'root', 'admin');
-  $conn=db_init($user_config["host"],$user_config["duser"],$user_config["dpw"],$user_config["dname"]);
-  $result=mysqli_query($conn,'SELECT * FROM topic');
-
-?>
-
 <html lang="ko">
   <head>
     <meta charset="utf-8">
@@ -30,6 +20,12 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="js/vender/ie-emulation-modes-warning.js"></script>
+    <script language="text/javascript">
+      function email_onclick(){
+        var email=document.signup.email_check.value;
+        alert("AA");
+      }
+    </script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -53,15 +49,86 @@
             </label>
           </div>
           <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-          <button class="btn btn-lg btn-primary btn-block" type="button">Sign up</button>
-        </form>
+          <button class="btn btn-lg btn-primary btn-block" type="button" data-toggle="modal" data-target="#myModal">Sign up</button>
+        </form>   
+          <!-- Modal - Sign up -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Sign up, and Design your Future!</h4>
+              </div>
+              <!-- 여기서부터 form 태그를 이용해서 값 입력 해야할 듯 -->
+              <form class="form-signup" id="signup" method="post" action="signup_process.php">
+                <div class="modal-body">
+                  <h4 id="signup_subtext">Please Input some informations.</h4>
+                  <div class=signupFirst>
+                    <span class="label_signup">First Name</span>
+                    <input type="text" name="firstName" class="form-control signupInfo" placeholder="First Name" required>
+                  </div>
+                  <div class=signupLast>
+                    <span class="label_signup">Last Name</span>
+                    <input type="text" name="lastName" class="form-control signupInfo" placeholder="Last Name" required>
+                  </div>
+                  <!--<form class="form-email" method="post" action="email_check.php"> <!-- 이메일 체크하려고 했는데, form이 안먹히나? -->
+                    <div class=signupEmail>
+                      <span class="label_signup">Email</span>
+                      <input type="email" name="email" class="form-control signupInfo" placeholder="Email address" required autofocus>
+                      <!--<button class="btn btn-lg btn-primary" id="checkButton" type="button">Check Email</button>-->
+                      <!--<span><a class="btn btn-lg btn-warning" id="checkButton" href="signup_process.php" role="button">Check Email</a></span>-->
+
+                      <!--<input type="button" id="email_check" class="btn btn-lg btn-warning" onclick="email_onclick()" value="Check Email"/>-->
+                    </div>
+                  <!--</form>-->
+                  <div class=signupPw>
+                    <span class="label_signup">Password</span>
+                    <input type="password" id="inputPassword" name="password" class="form-control signupInfo" placeholder="Password" required>
+                  </div>
+                    <div class=signupPwCheck>
+                    <span class="label_signup">Reinput Password</span>
+                    <input type="password" id="inputPasswordCheck" name="re_password" class="form-control signupInfo" placeholder="Reinput Password" required>
+                  </div>
+                  <div class=signupNick>
+                    <span class="label_signup">Nickname</span>
+                    <input type="text" name="nickname" class="form-control signupInfo" placeholder="Nickname" required>
+                    <!--<button class="btn btn-lg btn-primary" id="checkButton" type="button">Check Email</button>-->
+                    <!--<span><a class="btn btn-lg btn-warning" id="checkButton" href="#" role="button">Check Name</a></span>-->
+                  </div>
+                  <div class=signupJob>
+                    <span class="label_signup">Job</span>
+                    <input type="text" name="job" class="form-control signupInfo" placeholder="Job" required>
+                  </div>
+                  <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
+                  <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+                </div>
+                <div class="modal-footer">
+                  <a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
+                    <!-- Generated markup by the plugin -->
+                    <div class="tooltip top" role="tooltip">
+                      <div class="tooltip-arrow"></div>
+                      <div class="tooltip-inner">
+                        Some tooltip text!
+                      </div>
+                    </div>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
  
       </div> <!-- /container -->
     </div>
+    
+    
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/vender/ie10-viewport-bug-workaround.js"></script>
     
     <script src="js/vender/jquery-3.1.1.min.js"></script>
+    <script src="js/vender/bootstrap.min.js"></script>
     <script src="js/login.js"></script>
     
   </body>
