@@ -1,12 +1,11 @@
 $(function(){
     
-    
     var box=$('.row .col-lg-4'),
         duration=1500,
         $window=$(window);
         //currentWidth=$(window).width(),
        // $fixedWrapper=$('.fixed-header .navbar');
-    var marketingText=[['Blocks', 'All contents are managed by the block included some informations!'],
+    var menu=[['Blocks', 'All contents are managed by the block included some informations!'],
                         ['Word(AutoBio)', 'The perfect essay is made by many trials'],
                         ['Memo', 'The Memo makes man'],
                         ['Profile', 'Managing your personal informations'],
@@ -33,11 +32,11 @@ $(function(){
     });     */
     
     /* blocks-caption */
-    $('.marketing .col-lg-4').each(function(i, item){
+    $('.columns_l4 .col-lg-4').each(function(i, item){
         var titles=$(this).find('h2'),
             bodies=$(this).find('.marketingBody');
-        titles.text(marketingText[i][0]);
-        bodies.text(marketingText[i][1]);
+        titles.text(menu[i][0]);
+        bodies.text(menu[i][1]);
     });
     
     /* shadow box */    

@@ -4,4 +4,16 @@
         mysqli_select_db($conn, $dname); //dname : database name
             return $conn;
     }
+    
+    function login_check(){ // 해당 로그인 세션이 열렸는지 확인함.
+        session_start();
+        //require("config/config.php");
+        //$conn=db_init($config["host"],$config["duser"],$config["dpw"],$config["dname"]);
+        
+        if($_SESSION['is_login']==false){
+        echo('<script>alert("Please Login First!");
+              history.back();</script>');
+        }
+        return $conn;
+    }
 ?>

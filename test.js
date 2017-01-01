@@ -1,4 +1,1 @@
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-  $('[data-toggle="popover"]').popover()
-})
+var a=2;

@@ -35,6 +35,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/carousel.css" rel="stylesheet">
+    <link href="css/columns_l4.css" rel="stylesheet">
   </head>
 <!-- NAVBAR
 ================================================== -->
@@ -76,7 +77,7 @@
                       //echo "<a href='login.php'>로그인 해주세요</a>";
                 ?>
                 <span><a class="btn btn-lg btn-theme login_out" href="login.php" role="button">Login</a></span>
-                <span clss="signinName">    
+                <span class="signinName">    
                   <?php
                     }
                     else{
@@ -164,13 +165,15 @@
 
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing">
-      <div class="row">
+    <div class="container columns_l4">
+      <div class="row" id="block_direction">
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p class="marketingBody">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <a href="block.php" class="no-decoration"> <!-- 이동을 하긴 하지만 매우 부자연스러움 -->
+            <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2><!--menu[i][0]--></h2>
+            <p class="marketingBody"><!-- jquery --></p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          </a>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">

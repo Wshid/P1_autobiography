@@ -1,0 +1,40 @@
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.columns_l4 .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center;
+  cursor: pointer; 
+}
+
+.columns_l4 h2 {
+  font-weight: normal;
+}
+
+.columns_l4 .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.columns_l4 .col-md-4 {
+  margin-bottom: 20px;
+  text-align: center;
+  cursor: pointer; 
+}
+
+
+.columns_l4 .col-md-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.row .box_active{
+  box-shadow: 0px 0px 10px #000;
+  background-image:linear-gradient(45deg,rgba(204,153,204,.5) 0,rgba(0,0,0,.0001) 100%);;
+  /* box-shadow : [inset] [h-shadow] [v-shadow] [blur] [spread] */
+}
+
+.row img{
+  padding:5px; /* padding을 이용해서 그림자 효과 시 답답한 경우 해제 */
+}
