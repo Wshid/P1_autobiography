@@ -5,7 +5,8 @@ function check_submit(form_this){ //일단 가져오긴 하는듯
         subtitle=f_a_block.subtitle.value, //왜 값을 못찾는다고 뜰까
         body=f_a_block.body.value,
         tag=f_a_block.tag.value;
-
+    //console.log("TITLE : "+title);
+    
     var regex_title=/^[a-zA-Z0-9가-힣\s_]+$/, // ^로 정규식 시작, $로 정규식의 끝을 나타냄
         regex_subtitle=/^.{1,50}$/,
         regex_body=/^.{1,150}$/,
@@ -52,39 +53,85 @@ function check_submit(form_this){ //일단 가져오긴 하는듯
     
 }
 
-$(function(){
-    $('.form_modify').each(function(){
-        var $form=$(this); // 수정폼 자기 자신
+
+function form_submit(form_this){
+    //console.log("YEAD");
+    
+    if(!check_submit(form_this)){
+        return false;
+    }
+    var f_a_block=form_this;
+    var title=f_a_block.title.value,
+        subtitle=f_a_block.subtitle.value, //왜 값을 못찾는다고 뜰까
+        body=f_a_block.body.value,
+        tag=f_a_block.tag.value;
+    
+    $(function(){
+        var table_idx=$(form_this).find('#table_idx').text();
+        var $form=$(form_this);
+        var ret_data={'table_idx':table_idx};
         
-        if(check_submit($form)){
-            /*...*/
-        }
-        
-        $(this).on('click',function(){
-            var id=$(this).attr('id');
-            var num=3
-            
-            alert("clicked!");
-            console.log("clicked!");
-            //id.charAt(id.length-1);
-            //id를 어떻게 php변수화 할까
-            
-            var $ret=$form.serialize(); // 여기서부터 다시 수정하기!
-            $ret.
-            //data:{$form.serialize()}, 
-            $.ajax({
-                type:"POST",
-                url:"operate_block_process.php",
-                data:{idx : num},
-                //dataType:"text", //생략시, JQuery가 알아서 판단
-                success:function(ret){
-                    console.log(ret);
-                },
-                error:function(){
-                    alert("Restart");
-                }
-            });
-        
+        $form.find('[name]').each(function(){ // form안에 name 선언된게 input과 textarea임
+            var $this=$(this),
+                name=$this.attr('name'),
+                value=$this.val();
+                  
+             ret_data[name]=value;            
         });
-    });   
-})
+        
+        console.log("IN JQUERY");
+        console.log(ret_data); // 전달 데이터 수집 완료
+       
+       $.ajax({ 
+           url:"operate_block_process.php",
+           type:"post",
+           data:ret_data,
+           success:function(ret){
+               console.log("SUCCESSED : "+ret);
+           },
+           error:function(request, status, error){
+               console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+           }
+       });
+       
+    });
+    
+}
+
+        $('.form_operation').each(function(){ // 여기부분 자체가 안먹힘
+          var $form=$(this);
+          var url="operate_block_process.php";
+          var method='post';
+          console.log("RUN");
+          $form.on('click','.button_submit_operation', function(){// 각 form_operation 폼 들에서 submit을 찾음
+            var $this=$(this);
+            if(!check_submit()){ //여기 함수 안먹는듯 함
+              alert("ERROR");
+              return false;
+            }
+            console.log("RUNIT");
+            var data={};
+            
+            $this.find('[name]').each(function(){
+              var $this=$(this),
+                  name=$this.attr('name'),
+                  value=$this.val();
+                  
+              data[name]=value;
+            });
+            
+            $.ajax({
+              url:url,
+              type:method,
+              data:data,
+              success:function(ret){
+                console.log(ret);
+              }
+              
+            });
+            
+            return false;
+            
+          });
+          
+        });

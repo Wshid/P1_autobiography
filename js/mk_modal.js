@@ -40,19 +40,21 @@ function input_blank(idx, total_length, line_standard, line_start, line_end){
  ** "save_close" // save change, close 버튼
  ** "modify_delete" // modify, delete, save change, close // 버튼
  */
-function mk_modal_form_string(id, title, body_title, place_value, button_type, is_modify=true)
+function mk_modal_form_string(id, title, body_title, place_value, button_type, table_idx)
 {   
 
     var placeholder=false;
-    var idx_string="" // form과 modal에서 사용함
+    var idx_string=""; // form과 modal에서 사용함
+    var table_idx_string=""; // table_idx로 modal 우측 상단에 값을 나타낼 것인지 판별
 
     if(button_type=="save_close"){ //2버튼형, 여기서는 ADD/MODIFY => ADD
-        if(is_modify){ // modify 구분
+        if(table_idx!=-1){ // modify 구분, -1이 아니라면!
             placeholder=false;
             idx_string="modify_"+id;
-        }else{
+        }else{ // -1이라면 ADD 구문이라는 거
             placeholder=true;
             idx_string="add";//+id;
+            console.log("IN"); // 여기에 왜 들어가지? 들어갈 이유가 없는데..?
         }
     }else{
         //placeholder=false;
@@ -62,7 +64,7 @@ function mk_modal_form_string(id, title, body_title, place_value, button_type, i
         return;
         //idx_string="modal_modify_"+id
     }
-    
+    //console.log("MK_MODAL TABLE IDX : "+table_idx);
     //place_value.push("a");
     for(var i=0; i<4;i++){
         if(placeholder){
@@ -79,6 +81,17 @@ function mk_modal_form_string(id, title, body_title, place_value, button_type, i
             }
         }
     }
+    
+    
+    if(table_idx!=-1){ // modify라면, 인덱스 표시하기 위해 값 변경
+        table_idx_string=table_idx;
+    }
+    
+    //console.log("TABLE_IDX_STRING : "+table_idx_string);
+    var form_name="form_"+idx_string;
+    var modal_name="modal_"+idx_string;
+    //console.log(modal_name);
+    
     var ret=
           '<div class="modal fade" id="modal_'+idx_string+'" tabindex="-1" role="dialog" aria-labelledby="modal_'+idx_string+'_Label">'+
               '<div class="modal-dialog" role="document">'+
@@ -88,7 +101,9 @@ function mk_modal_form_string(id, title, body_title, place_value, button_type, i
                       '<h3 class="modal-title" id="modal_'+idx_string+'_Label">'+title+'</h3>'+
                   '</div>'+
                   //'<form class="form_modify" id="form_'+idx_string+'" method="post" action="operate_block_process.php" Onsubmit="return check_submit(this);">'+ //submit시, 인자로 특정 변수 넘기는게 원활하지 않은ㄷ스 
-                  '<form class="form_modify" id="form_'+idx_string+'">'+ //submit시, 인자로 특정 변수 넘기는게 원활하지 않은ㄷ스 
+                  '<form class="form_operation" id="form_'+idx_string+'">'+ //submit시, 인자로 특정 변수 넘기는게 원활하지 않은ㄷ스 
+                    /* modify가 설정이 되면, table_idx라는 값을 받아올 수 있어야함 */
+                     '<span id="table_idx">'+table_idx_string+'</span>'+
                     '<div class="modal-body">'+
                       '<h5>'+body_title+'</h5>'+
                       '<div class="form-inner-container">'+
@@ -122,12 +137,12 @@ function mk_modal_form_string(id, title, body_title, place_value, button_type, i
                       //'<p>'+"$ARA"+'</p>';
                       switch(button_type){
                             case "save_close":
-                                ret+='<button type="submit" class="btn btn-primary">Save changes</button>'+
+                                ret+='<button type="button" class="btn btn-primary button_submit_operation" onclick="return form_submit('+form_name+');">Save changes</button>'+ // 여기서 설정해야함
                                         '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
                                         
                                 break;
                             case "modify_delete":
-                                ret+='<button type="button" class="btn btn-warning button_modify">Modify</button>'+ // 추후 개발하기로
+                                ret+='<button type="button" class="btn btn-warning button_modify">Modify</button>'+ 
                                         '<button type="button" class="btn btn-danger button_delete">Delete</button>'+
                                         '<button type="submit" class="btn btn-primary">Save changes</button>'+
                                         '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
@@ -149,7 +164,7 @@ function mk_modal_form_string(id, title, body_title, place_value, button_type, i
 }
 
 //modal2 : Input Form 형태가 아님 // 무조건 view
-function mk_modal_string(id, title, subtitle, body, tag, button_type)
+function mk_modal_string(id, title, subtitle, body, tag, button_type, table_idx) // table_idx는 form 호출시 넘겨줄 값
 {
     var idx_string="";
     
@@ -200,7 +215,7 @@ function mk_modal_string(id, title, subtitle, body, tag, button_type)
               '</div>'+
             '</div>';
     if(button_type=="modify_delete"){
-        ret+=mk_modal_form_string(id, "Modify your block", "Please Input below things",[title, subtitle, body, tag],'save_close');
+        ret+=mk_modal_form_string(id, "Modify your block", "Please Input below things",[title, subtitle, body, tag],'save_close', table_idx);
         // String 위치를 바꾸니까 됨!! Modal끼리 종속하는 무언가가 있는듯
     }
     return ret;
@@ -210,9 +225,9 @@ function mk_modal_string(id, title, subtitle, body, tag, button_type)
 function modify_func(id){ // 두개 이상 넘기려 하니까 계속 에러남, 여기서 처리하기로
     var close_modal='#modal_view_'+id, // 닫을 Modal
         open_modal='#modal_modify_'+id; // 새로 띄울 Modal
-
+    //console.log("MODAL_REAL_NAME : "+open_modal);
     $(function(){
-        $(close_modal).modal('toggle');
+       $(close_modal).modal('toggle');
         //$(open_modal).modal('toggle'); //그냥 이렇게 바로 해도 됨
         setTimeout(function(){
             $(open_modal).modal('show'); // 1000ms 뒤에 open_modal을 open 한다

@@ -178,7 +178,7 @@
         
         // JQUERY로 해서 객체로 받아내면 더 완벽했을텐데.. 아쉽다
         function get_block_json(name){ 
-          var plusTitle="Add your block! :)",
+          var plusTitle="ADD YOUR BLOCK! :)",
             plusSub="Some Information Required",
             id_add_string="add";
           var plusHTML='<div class="columns_l4">'+
@@ -191,7 +191,7 @@
                           '</div>'; // div가 두개 모자름, 추후 추가함
           var modal4_string=["Title", "SubTitle", "Body", "Tag"]; //여기서 에러난게 아냐
           //console.log(modal4_string);
-          plusHTML+=mk_modal_form_string(id_add_string, plusTitle, plusSub, modal4_string, "save_close", false); // placeholder=true
+          plusHTML+=mk_modal_form_string(id_add_string, plusTitle, plusSub, modal4_string, "save_close", -1); // is_modify=-1
           //var modifyHTML=mk_modal4_string(id_add_block, plusTitle, plusSub, )
             
             $.getJSON('json/blocks/block_'+name+'.json', function(data){
@@ -205,8 +205,9 @@
                     var button_type="modify_delete"
                     var idx_string=""
                     var col3_base=i%3; // 3열 체크시 사용한다.
-                    var modalHTML=mk_modal_string(i, item.title, item.subtitle, item.body, item.tag, button_type);
-
+                    var modalHTML=mk_modal_string(i, item.title, item.subtitle, item.body, item.tag, button_type, item.user_idx);
+                    var block_idx=item.user_idx; //form에 임의 저장할 값
+                    
                     itemHTML+=check_line(col3_base, line_start, 1); // 1 : check_line_start
                     
                     idx_string="modal_view_"+i;
@@ -233,7 +234,8 @@
                     itemHTML+=input_blank(i, length-1, col3_base, line_start, line_end);
                     
                     // 여기에 modify관련 modal을 만들어주어야 함
-                    modifyHTML+=mk_modal_form_string(i, plusTitle, plusSub, modal4_string, "save_close");
+                    //modifyHTML+=mk_modal_form_string(i, plusTitle, plusSub, modal4_string, "save_close", item.user_idx);
+                      // 안쓰는데?
                     //itemHTML+="</div></div>";
                     elements+=itemHTML; // JQuery 객체화를 피하기 : 단순 문자열로 처리한다.
                    //console.log(elements); 
@@ -252,11 +254,13 @@
             
         }
         
-        $('.form_modify').each(function(){
-            
-          $(this).on('click',function(){
-            var id=$(this).attr('id');
-            var num=3
+        /*
+        $('.form_operation').each(function(){
+          var $form=$(this);
+          
+          $form.on('click', '#button_submit_operation',function(){
+            var table_idx=$(this).find('#table_idx').text(); // form에 저장된 table_idx 가져오기
+            var form_data=$form.serialize();
             alert("clicked!");
             console.log("clicked!");
             //id.charAt(id.length-1);
@@ -264,7 +268,8 @@
             $.ajax({
               type:"POST",
               url:"operate_block_process.php",
-              data:{idx : num},
+              data:{'table_idx':num,
+                    form_data},
               dataType:"text",
               success:function(ret){
                 console.log(ret);
@@ -276,7 +281,7 @@
             
           });
         });     
-        
+        */
         
         function box_activing(){  //block.js와 중복됨 //
             $('.columns_l4 .col-md-4').each(function(){

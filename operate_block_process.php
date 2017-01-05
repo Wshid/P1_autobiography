@@ -15,7 +15,7 @@
     
     //echo("MODAL : ".$_SESSION['alter_idx']);
     try{
-        $idx=$_POST['idx'];
+        $idx=$_POST['table_idx'];
         if(!$idx){
             throw new exception("NOT RECIEVE idx");
         }
@@ -23,6 +23,9 @@
         echo $e->getMessage();
         //echo $e->getCode();
     }
+    
+    echo($user.",".$title.",".$subtitle.",".$body.",".$tag.",".$idx);
+    
     //ADD 와 MODIFY를 나누어 진행
     /*
     // user와 user_idx가 이미 있다는걸 해야할까?
