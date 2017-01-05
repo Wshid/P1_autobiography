@@ -65,7 +65,7 @@
             <!--<h1 class="cover-heading">Your Personal Dictionary.</h1>-->
             <!--<p class="lead" id="lbody">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>-->
             <p class="lead" id="but">
-              <a href="#" class="btn btn-lg btn-default">Learn more</a>
+              <a href="carousel.php" class="btn btn-lg btn-default">Move out!</a>
             </p>
           </div>
 
@@ -84,8 +84,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vender/jquery-3.1.1.min.js"></script>
+    <script src="js/vender/bootstrap.min.js"></script>
     <script src="js/cover.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->

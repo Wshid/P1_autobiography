@@ -163,6 +163,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/vender/ie10-viewport-bug-workaround.js"></script>
     <script src="js/block.js"></script>
+    <script src="js/mk_modal.js"></script>
     <script src="js/input_check.js"></script>
     <script>
       $(function(){
@@ -174,128 +175,67 @@
         
         get_block_json(name);
         
+        
+        // JQUERY로 해서 객체로 받아내면 더 완벽했을텐데.. 아쉽다
         function get_block_json(name){ 
           var plusTitle="Add your block! :)",
             plusSub="Some Information Required",
-            id_add_block="add_block",            
-            plusHTML='<div class="columns_l4">'+
-            '<div class="row">'+
-              '<div class="col-md-4" data-toggle="modal" data-target="#'+id_add_block+'">'+ /* 버튼 없이도 됨! 이득! :) */
-                '<div class="row_inner" id="plus_block">'+ /* add_block으로 명명하면 어디선가 충돌이 나는 듯 하다 */
-                  '<h3>'+plusTitle+'</h3>'+
-                  '<h5>'+plusSub+'</h5>'+
-                '</div>'+
-              '</div>'+ //제대로 인식이 안됨, modal fade in 이 되어야 하는데 계속 row_inner in이 됨
-              '<div class="modal fade" id="'+id_add_block+'" tabindex="-1" role="dialog" aria-labelledby="'+id_add_block+'_Label">'+
-                  '<div class="modal-dialog" role="document">'+
-                    '<div class="modal-content">'+
-                      '<div class="modal-header">'+
-                          '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
-                          '<h3 class="modal-title" id='+id_add_block+'_Label">'+plusTitle+'</h3>'+
-                      '</div>'+
-                      '<form id="form_add_block" method="post">'+
-                        '<div class="modal-body">'+
-                          '<h5>'+plusSub+'</h5>'+
-                          
-                          '<div class="form-group">'+
-                              '<label for="label_title" class="col-xs-2 control-label">Text</label>'+
-                              '<div class="col-xs-10">'+ //기존에 사용했던 방식과 다르게 여기선 grid를 이용하여 표현한다
-                                '<input type="text" name="firstName" class="form-control" placeholder="First Name" required>'+
-                              '</div>'+
-                          '</div>'+
-                          '<div class="form-group">'+
-                              '<label for="label_subtitle" class="col-xs-2 control-label">Search</label>'+
-                              '<div class="col-xs-10">'+
-                                  '<input class="form-control" type="text" placeholder="SubTitle" required>'+//<!-- value는 실제 입력 값, placeholder는 예시 값(회색) -->'+
-                              '</div>'+
-                          '</div>'+
-                          '<div class="form-group">'+
-                              '<label for="label_body" class="col-xs-2 control-label">Body</label>'+
-                              '<div class="col-xs-10">'+
-                                  '<textarea class="form-control" rows=5 id="body" placeholder="body" required></textarea>'+
-                              '</div>'+
-                          '</div>'+
-                          '<div class="form-group">'+
-                              '<label for="label_tag" class="col-xs-2 control-label">Tag</label>'+
-                              '<div class="col-xs-10">'+
-                                  '<input class="form-control" type="text" placeholder="tag" required>'+//<!-- value는 실제 입력 값, placeholder는 예시 값(회색) -->'+
-                              '</div>'+
-                          '</div>'+                          
-                        '</div>'+
-                        '<div class="modal-footer">'+
-                          //'<p>'+item.tag+'</p>'+
-                          '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'+
-                          '<button type="button" class="btn btn-primary" onclick="javascript:check_submit();">Save changes</button>'+
-                        '</div>'+
-                      '</form>'+
-                      '</div>'+
-                    '</div>'+
-                  '</div>';
+            id_add_string="add";
+          var plusHTML='<div class="columns_l4">'+
+                        '<div class="row">'+
+                          '<div class="col-md-4" data-toggle="modal" data-target="#modal_'+id_add_string+'">'+ /* 버튼 없이도 됨! 이득! :) */
+                            '<div class="row_inner" id="plus_block">'+ /* add_block으로 명명하면 어디선가 충돌이 나는 듯 하다 */
+                              '<h3>'+plusTitle+'</h3>'+
+                              '<h5>'+plusSub+'</h5>'+
+                            '</div>'+
+                          '</div>'; // div가 두개 모자름, 추후 추가함
+          var modal4_string=["Title", "SubTitle", "Body", "Tag"]; //여기서 에러난게 아냐
+          //console.log(modal4_string);
+          plusHTML+=mk_modal_form_string(id_add_string, plusTitle, plusSub, modal4_string, "save_close", false); // placeholder=true
+          //var modifyHTML=mk_modal4_string(id_add_block, plusTitle, plusSub, )
             
             $.getJSON('json/blocks/block_'+name+'.json', function(data){
                 var length=data.length, 
                   elements=plusHTML; // 배열이 아닌 string을 사용한다.
                
-                console.log('json/blocks/block_'+name+'.json');
+                //console.log('json/blocks/block_'+name+'.json');
                 $.each(data, function(i, item){
-                    var modalHTML='<div class="modal fade" id="'+i+'_Modal" tabindex="-1" role="dialog" aria-labelledby="'+i+'_ModalLabel">'+
-                                    '<div class="modal-dialog" role="document">'+
-                                      '<div class="modal-content">'+
-                                        '<div class="modal-header">'+
-                                            '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
-                                            '<h3 class="modal-title" id='+i+'_ModalLabel">'+item.title+'</h3>'+
-                                        '</div>'+
-                                      '<div class="modal-body">'+
-                                        '<h5>'+item.subtitle+'</h5>'+
-                                        '<p>'+item.body+'</p>'+
-                                      '</div>'+
-                                      '<div class="modal-footer">'+
-                                        '<p>'+item.tag+'</p>'+
-                                      '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'+
-                                      '<button type="button" class="btn btn-primary">Save changes</button>'+
-                                      '</div>'+
-                                    '</div>'+
-                                  '</div>'+
-                                '</div>';
                     var itemHTML="";
-                    if(i%3==line_start){
-                        itemHTML+='<div class="columns_l4">'+
-                                    '<div class="row">';
-                    }
-                    //console.log($(itemHTML).get(0)); /* JQuery 객체화 하면, 임의대로 태그를 완성시킴 */
-                    /*itemHTML+='<div class="col-md-4"><button type="button" data-toggle="modal" data-target="#'+i+'_Modal"></button>'+
-                                '<h3>'+item.title+'</h3>'+
-                                '<h5>'+item.subtitle+'</h5>'+
-                            '</div>'+modalHTML;*/
-                    itemHTML+='<div class="col-md-4" data-toggle="modal" data-target="#'+i+'_Modal">'+ /* 버튼 없이도 됨! 이득! :) */
+                    var modifyHTML="";
+                    var button_type="modify_delete"
+                    var idx_string=""
+                    var col3_base=i%3; // 3열 체크시 사용한다.
+                    var modalHTML=mk_modal_string(i, item.title, item.subtitle, item.body, item.tag, button_type);
+
+                    itemHTML+=check_line(col3_base, line_start, 1); // 1 : check_line_start
+                    
+                    idx_string="modal_view_"+i;
+                    /*
+                    if(button_type=="save_close"){
+                      idx_string="modal_modify_"+i;
+                      idx_string="modal_view_"+i;
+                    }else{
+                      alert("ERROR ON BUTTON TYPE");
+                    }*/
+                    // grid 생성하는 부분
+                    itemHTML+='<div class="col-md-4" data-toggle="modal" data-target="#'+idx_string+'">'+ /* 버튼 없이도 됨! 이득! :) */
                                 '<div class="row_inner">'+
                                   '<h3>'+item.title+'</h3>'+
                                   '<h5>'+item.subtitle+'</h5>'+
                                 '</div>'+
                             '</div>'+modalHTML;        
                    
-                    if(i%3==line_end){ // idx가 +,0,1로 배분, 1이면 종료
-                       itemHTML+="</div></div>";
-                    }
+                    itemHTML+=check_line(col3_base, line_end, 2);
                     
-                    console.log(i%3);
+                    //console.log(col3_base);
                     // *** 추후 제거 할 부분, 테스트 및 누수를 확인함 ***//
-                    if((i==(length-1)) && (i%3!=line_end)){ // 세개가 다 안찼는데 종료시키려 한다면
-                        var col_m='<div class="col-md-4"><div class="row_inner"><h2>BLANK</h2></div></div>',
-                            col_end="</div></div>";
-                        switch(i%3){
-                            case line_start:
-                                itemHTML+=col_m+col_m+col_end;
-                                break;
-                            case line_end:
-                                itemHTML+=col_m+col_end;
-                                break;
-                            default:
-                                console.log("ERROR");
-                                break;
-                        }
-                    }
-                   elements+=itemHTML; // JQuery 객체화를 피하기 : 단순 문자열로 처리한다.
+                    
+                    itemHTML+=input_blank(i, length-1, col3_base, line_start, line_end);
+                    
+                    // 여기에 modify관련 modal을 만들어주어야 함
+                    modifyHTML+=mk_modal_form_string(i, plusTitle, plusSub, modal4_string, "save_close");
+                    //itemHTML+="</div></div>";
+                    elements+=itemHTML; // JQuery 객체화를 피하기 : 단순 문자열로 처리한다.
                    //console.log(elements); 
                    /*for(i=0; i<$(itemHTML).length;i++){
                        elements.push($(itemHTML).get(i)); // 여기 부분에서 원활하게 값을 못가져옴, JQuery 객체화 하면, 임의대로 태그를 완성시킴 
@@ -312,9 +252,15 @@
             
         }
         
+        $('.button_modify').each(function(){
+          $(this).on('click', function(){
+            '<?php echo($_SESSION["modal_state"]=2); ?>'; // 1: ADD, 2: MODIFY, 3:DELETE
+          });
+        });
+        
         function box_activing(){  //block.js와 중복됨 //
             $('.columns_l4 .col-md-4').each(function(){
-                console.log("BOX_ACTIVE");
+                //console.log("BOX_ACTIVE");
                 $(this).on('mouseover', function(){
                     $(this).addClass('box_active');
                 })
@@ -325,29 +271,5 @@
         }
       });
     </script>
-    <!--<script src="js/get_block_json.js"></script>-->
-    <!-- 외부 파일에서 실행시키는 거기 때문에 진짜 load_by_js만 실행해서 생기는 오류일수도 -->
   </body>
 </html>
-
-
-<!--
-'<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="'+i+'_Modal">'+
-                                    '<div class="modal-dialog" role="document">'+
-                                      '<div class="modal-content">'+
-                                        '<div class="modal-header">'+
-                                            '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
-                                            '<h3 class="modal-title" id="myModalLabel">'+item.title+'</h3>'+
-                                        '</div>'+
-                                      '<div class="modal-body">'+
-                                        '<h5>'+item.subtitle+'</h5>'+
-                                        '<p>'+item.body+'</p>'+
-                                      '</div>'+
-                                      '<div class="modal-footer">'+
-                                        '<p>'+item.tag+'</p>'+
-                                      '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'+
-                                      '<button type="button" class="btn btn-primary">Save changes</button>'+
-                                      '</div>'+
-                                    '</div>'+
-                                  '</div>'+
-                                '</div>';-->

@@ -1,9 +1,4 @@
-var load_function=null;
-
-function get_by_js(name){
-    load_function(name);
-}
-
+// JQUERY FILE
 $(function(){
     
     var $buttonContainer=$('.buttonContainer'),
@@ -54,6 +49,8 @@ $(function(){
             $this.removeClass('mouseOver');
         });
     });
+
+    
     
     
     /* 현재 유저별로 파일을 저장하지만, 

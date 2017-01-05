@@ -1,1 +1,7 @@
-var a=2;
+$(function(){
+    //$('#myModal').on('shown.bs.modal', function () {
+    //    $('#myInput').focus()
+    //});
+    
+    $('#myModal').modal('show');
+});
