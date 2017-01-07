@@ -201,7 +201,7 @@
                 //console.log('json/blocks/block_'+name+'.json');
                 $.each(data, function(i, item){
                     var itemHTML="";
-                    var modifyHTML="";
+                    //var modifyHTML="";
                     var button_type="modify_delete"
                     var idx_string=""
                     var col3_base=i%3; // 3열 체크시 사용한다.
@@ -247,7 +247,7 @@
                 });
                 //console.log(elements);
                 $blockContainer.append(elements);
-                
+                $blockContainer.append(mk_modal_success("title")); // SUCCESS 모달 생성, mk_modal에 지정
                 box_activing();
                 
             });

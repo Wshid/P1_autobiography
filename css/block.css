@@ -209,6 +209,6 @@ textarea{
   clear:both;
   /* http://teraphonia.tistory.com/636 */
 }
-#table_idx{
+.in_info{
   display:none; /* 가리기로!, table idx로, ajax를 통해 값을 전달할 것 */
 }

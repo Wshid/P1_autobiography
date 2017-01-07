@@ -54,7 +54,7 @@ function check_submit(form_this){ //일단 가져오긴 하는듯
 }
 
 
-function form_submit(form_this){
+function form_submit(form_this){ // ADD or MODIFY의 경우 form 객체를 가져옴
     //console.log("YEAD");
     
     if(!check_submit(form_this)){
@@ -68,9 +68,11 @@ function form_submit(form_this){
     
     $(function(){
         var table_idx=$(form_this).find('#table_idx').text();
+        var modal_name=$(form_this).find('#modal_name').text();
+        var operation=$(form_this).find('#operation').text();
         var $form=$(form_this);
-        var ret_data={'table_idx':table_idx};
-        
+        var ret_data={'table_idx':table_idx, 'modal_name':modal_name, 'operation':operation};
+            // modal_name 넘겨줘서 뭐하려고..?
         $form.find('[name]').each(function(){ // form안에 name 선언된게 input과 textarea임
             var $this=$(this),
                 name=$this.attr('name'),
@@ -79,15 +81,18 @@ function form_submit(form_this){
              ret_data[name]=value;            
         });
         
-        console.log("IN JQUERY");
+        //console.log("IN JQUERY");
         console.log(ret_data); // 전달 데이터 수집 완료
        
-       $.ajax({ 
+       $.ajax({ // MODIFY, ADD 시 요청
            url:"operate_block_process.php",
            type:"post",
            data:ret_data,
-           success:function(ret){
+           success:function(ret){ //닫을 이름을 넘겨주던가..?
                console.log("SUCCESSED : "+ret);
+               //ret; //여기서 이제 새로고침 작업만 진행하면 됨
+               modal_success(modal_name); // mk_modal에서 로드
+               //location.reload(); // success modal에서 진행하기로!
            },
            error:function(request, status, error){
                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -98,40 +103,4 @@ function form_submit(form_this){
     
 }
 
-        $('.form_operation').each(function(){ // 여기부분 자체가 안먹힘
-          var $form=$(this);
-          var url="operate_block_process.php";
-          var method='post';
-          console.log("RUN");
-          $form.on('click','.button_submit_operation', function(){// 각 form_operation 폼 들에서 submit을 찾음
-            var $this=$(this);
-            if(!check_submit()){ //여기 함수 안먹는듯 함
-              alert("ERROR");
-              return false;
-            }
-            console.log("RUNIT");
-            var data={};
-            
-            $this.find('[name]').each(function(){
-              var $this=$(this),
-                  name=$this.attr('name'),
-                  value=$this.val();
-                  
-              data[name]=value;
-            });
-            
-            $.ajax({
-              url:url,
-              type:method,
-              data:data,
-              success:function(ret){
-                console.log(ret);
-              }
-              
-            });
-            
-            return false;
-            
-          });
-          
-        });
+
