@@ -42,7 +42,7 @@
             header('Location: ./carousel.php');
         }
     }else{ /* 입력된 데이터가 없을 때 */
-            echo('<script>alert("Please input data);
+            echo('<script>alert("Please input data");
                 history.back();
             </script>'); // history.back()을 이용하여 뒤로 돌아간다.     
     }

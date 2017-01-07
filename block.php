@@ -1,7 +1,7 @@
 <?php
   session_start();
   require("lib/db.php");
-  require("load_block_process.php");
+  require("lib/load_block_process.php");
   login_check();
   load_block_process();
   
@@ -52,7 +52,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">AutoBiography</a>
+              <a class="navbar-brand" href="carousel.php">AutoBiography</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse"><!-- id="navbar" -->
               <ul class="nav navbar-nav">

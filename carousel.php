@@ -77,7 +77,7 @@
                       //echo "<a href='login.php'>로그인 해주세요</a>";
                 ?>
                 <span><a class="btn btn-lg btn-theme login_out" href="login.php" role="button">Login</a></span>
-                <span class="signinName">    
+                <span class="signinName" style="color:white;"> <!-- 먹히지가 않아.. 글씨색 -->
                   <?php
                     }
                     else{

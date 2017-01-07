@@ -11,8 +11,7 @@
         //$conn=db_init($config["host"],$config["duser"],$config["dpw"],$config["dname"]);
         
         if($_SESSION['is_login']==false){
-        echo('<script>alert("Please Login First!");
-              history.back();</script>');
+        echo('<script>alert("Please Login First!"); location.replace("./login.php");</script>');
         }
         return $conn;
     }

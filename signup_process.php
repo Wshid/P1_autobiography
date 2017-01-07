@@ -2,6 +2,7 @@
 
     require("lib/db.php");
     require("config/config.php");
+    require("lib/file_check.php");
     $conn=db_init($config["host"],$config["duser"],$config["dpw"],$config["dname"]);
     
     $firstName=$_POST['firstName'];
@@ -58,12 +59,17 @@
     $sql_insert_profile="INSERT INTO profile(firstName, lastName, job, nickName) VALUES ('".$firstName."', '".$lastName."', '".$job."' , '".$nickname."')";
     mysqli_query($conn, $sql_insert_profile);
     
+    
+    //$file_path='json/blocks/block_'.$user.'.json';
+    //$ret="";
+    
+    file_blocks_json($nickname, $ret);
+    
+    
     echo('<script>alert("Congratulations! :) Please Sign in your account");
             history.back();
         </script>');    
     
     /* 여기 구문도 조금 이상 $result->num_rows를 반복을 해야할 듯 한데, if문 하나로만 비교 함*/
-
-    
 
 ?>

@@ -1,9 +1,9 @@
 <?php
   session_start();
   require("lib/db.php");
-  require("load_block_process.php");
+  require("lib/load_block_process.php");
   login_check();
-  load_block_process();
+  load_block_process(); //여기서 숫자 나옴
   
 ?>
 
@@ -52,7 +52,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">AutoBiography</a>
+              <a class="navbar-brand" href="carousel.php">AutoBiography</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse"><!-- id="navbar" -->
               <ul class="nav navbar-nav">
@@ -78,7 +78,7 @@
                       //echo "<a href='login.php'>로그인 해주세요</a>";
                 ?>
                 <span><a class="btn btn-lg btn-theme login_out" href="login.php" role="button">Login</a></span>
-                <span clss="signinName">    
+                <span class="signinName">  
                   <?php
                     }
                     else{
@@ -253,35 +253,6 @@
             });
             
         }
-        
-        /*
-        $('.form_operation').each(function(){
-          var $form=$(this);
-          
-          $form.on('click', '#button_submit_operation',function(){
-            var table_idx=$(this).find('#table_idx').text(); // form에 저장된 table_idx 가져오기
-            var form_data=$form.serialize();
-            alert("clicked!");
-            console.log("clicked!");
-            //id.charAt(id.length-1);
-            //id를 어떻게 php변수화 할까
-            $.ajax({
-              type:"POST",
-              url:"operate_block_process.php",
-              data:{'table_idx':num,
-                    form_data},
-              dataType:"text",
-              success:function(ret){
-                console.log(ret);
-              },
-              error:function(){
-                alert("Restart");
-              }
-            });
-            
-          });
-        });     
-        */
         
         function box_activing(){  //block.js와 중복됨 //
             $('.columns_l4 .col-md-4').each(function(){

@@ -1,12 +1,11 @@
 <?php
-    function load_block_process(){ // json형태를 리턴한다.
+    function load_block_process(){ // json형태를 리턴한다. // block.php에서 사용함
         /* 각 유저별 db를 조회하여 json 파일 형태로 리턴한다.
          * user, user_idx, title, subtitle, body, tag를 키로 하는 파일이다.
          */
 
-        //session_start(); 굳이 세션이 필요 없음
-        //require("lib/db.php"); // 이미 db_init을 할때 정보를 가져왔음
         require("config/config.php");
+        require("lib/file_check.php");
         //$conn=login_check(); // $conn 변수도 가져온다. db=autobiography
         $conn=db_init($config["host"],$config["duser"],$config["dpw"],$config["dname"]);
         //echo($conn);
@@ -40,27 +39,12 @@
         
         $ret=json_encode($blocks); // encode 화 한다.
         
-        $file_path='json/blocks/block_'.$user.'.json';
+        //$file_path='json/blocks/block_'.$user.'.json';
         
-        try{ /* 기존 파일은 지우고, 다시 불러온다. */
-            if(file_exists($file_path)){
-                $fd=unlink($file_path);
-                if(!$fd){
-                    /* 지우지 못했을때 exception을 바로 하면 되지 않을까 */
-                    throw new Exception("Can't Delete Existed File");
-                }
-            }
-            if($fp=fopen($file_path, 'x')){
-                fputs($fp, $ret);
-                fclose($fp);
-                return;
-            }else{
-                throw new Exception("Can't Open new File");
-            }
-            
-        }catch(Exception $e){
-            echo $e->getMessage();
-        }
+        
+        file_blocks_json($name, $ret); // $name과 $user가 동일한 값이 들어갈 듯 싶지만..
+            // 여기서 숫자가 리턴됨. 이유가 뭐지?
+
     }
 
 ?>
