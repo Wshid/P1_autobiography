@@ -4,7 +4,7 @@ function check_submit(form_this){ //일단 가져오긴 하는듯
     var title=f_a_block.title.value,
         subtitle=f_a_block.subtitle.value, //왜 값을 못찾는다고 뜰까
         body=f_a_block.body.value,
-        tag=f_a_block.tag.value;
+        tag_raw=f_a_block.tag.value;
     //console.log("TITLE : "+title);
     
     var regex_title=/^[a-zA-Z0-9가-힣\s_]+$/, // ^로 정규식 시작, $로 정규식의 끝을 나타냄
@@ -13,6 +13,8 @@ function check_submit(form_this){ //일단 가져오긴 하는듯
         regex_tag=/^\#[a-zA-Z가-힣 _]{1,10}$/;
     //+라는 문자가 꼭 있어야함, 글자가 몇개까지 갈지 모르니까
     
+    var tag=tag_raw.split(" ");
+    //console.log(tag);
     
     // 제목 정규식 검사
     //alert("REGEX : "+title); // 테스트 코드
@@ -40,9 +42,15 @@ function check_submit(form_this){ //일단 가져오긴 하는듯
     }
     
     // tag 정규식 검사. #으로 시작하여야하며, 1~10자여야 한다.
-    if(!regex_tag.test(tag)){
-        alert('Tags Format is #[1~10character]');
-        return false;
+
+    
+    for(var tag_idx in tag){
+        console.log(tag[tag_idx]);
+        console.log(!regex_tag.test(tag[tag_idx]));
+        if(!regex_tag.test(tag[tag_idx])){
+            alert('Tags Format is #[1~10character]');
+            return false;
+        }        
     }
     
     

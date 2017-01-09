@@ -8,9 +8,10 @@
     $title=$_POST['title'];
     $subtitle=$_POST['subtitle'];
     $body=$_POST['body'];
-    $tag=$_POST['tag']; // 태그 값은 전처리가 필요할 듯, 스페이스바에 의해 구문을 분리해야함
-        // .split 함수를 이용하면 배열 형태로 가져온다고 함!
-
+    $tag_raw=$_POST['tag'];
+    
+    $tag=str_replace(" ", ",", $tag_raw);
+    
 
     try{
         $operation=$_POST['operation'];

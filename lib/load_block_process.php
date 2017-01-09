@@ -28,10 +28,11 @@
             $title=$row['title'];
             $subtitle=$row['subtitle'];
             $body=$row['body'];
-            $tag=$row['tag'];
-            //echo("<br>");
-            //print($body);
-            //echo("<br>");
+            $tag_raw=$row['tag'];
+
+            $tag=explode(",",$tag_raw); // 데이터를 쉼표로 구분
+            
+            //echo("<script>console.log(".$tag[0].");</script>");
             array_push($blocks, array('user'=>$user, 'user_idx' => $user_idx, 'title'=>$title, 'subtitle'=>$subtitle, 'body'=>$body, 'tag'=>$tag));
             //print($ret[0]);
         }

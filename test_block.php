@@ -205,8 +205,19 @@
                     var button_type="modify_delete"
                     var idx_string=""
                     var col3_base=i%3; // 3열 체크시 사용한다.
-                    var modalHTML=mk_modal_string(i, item.title, item.subtitle, item.body, item.tag, button_type, item.user_idx);
+                    var tag_raw=item.tag;
+                    
+                    console.log(tag_raw);
+                    var tag="";
+                    for(var tag_idx in tag_raw){
+                      tag+=tag_raw[tag_idx]+" ";
+                    }
+                    
+                    tag=tag.trim();
+                    
+                    var modalHTML=mk_modal_string(i, item.title, item.subtitle, item.body, tag, button_type, item.user_idx);
                     var block_idx=item.user_idx; //form에 임의 저장할 값
+                    
                     
                     itemHTML+=check_line(col3_base, line_start, 1); // 1 : check_line_start
                     
