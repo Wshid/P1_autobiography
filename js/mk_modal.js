@@ -113,31 +113,31 @@ function mk_modal_form_string(id, title, body_title, place_value, button_type, t
                     '<div class="modal-body">'+
                       '<h5>'+body_title+'</h5>'+
                       '<div class="form-inner-container">'+
-                      '<div class="form-group">'+
-                          '<label for="label_title" class="col-xs-2 control-label">Title</label>'+
-                          '<div class="col-xs-10">'+ //기존에 사용했던 방식과 다르게 여기선 grid를 이용하여 표현한다
-                            '<input type="text" name="title" class="form-control" '+place_value[0]+' required>'+
+                          '<div class="form-group">'+
+                              '<label for="label_title" class="col-xs-2 control-label">Title</label>'+
+                              '<div class="col-xs-10">'+ //기존에 사용했던 방식과 다르게 여기선 grid를 이용하여 표현한다
+                                '<input type="text" name="title" class="form-control" '+place_value[0]+' required>'+
+                              '</div>'+
                           '</div>'+
-                      '</div>'+
-                      '<div class="form-group">'+
-                          '<label for="label_subtitle" class="col-xs-2 control-label">SubTitle</label>'+
-                          '<div class="col-xs-10">'+
-                              '<input type="text" name="subtitle" class="form-control" '+place_value[1]+' required>'+//<!-- value는 실제 입력 값, placeholder는 예시 값(회색) -->'+
+                          '<div class="form-group">'+
+                              '<label for="label_subtitle" class="col-xs-2 control-label">SubTitle</label>'+
+                              '<div class="col-xs-10">'+
+                                  '<input type="text" name="subtitle" class="form-control" '+place_value[1]+' required>'+//<!-- value는 실제 입력 값, placeholder는 예시 값(회색) -->'+
+                              '</div>'+
                           '</div>'+
-                      '</div>'+
-                      '<div class="form-group">'+
-                          '<label for="label_body" class="col-xs-2 control-label">Body</label>'+
-                          '<div class="col-xs-10">'+ //구문 변동이 필요함 textarea에서는 다르게 값을 가져와야 할 듯
-                              place_value[2]+
+                          '<div class="form-group">'+
+                              '<label for="label_body" class="col-xs-2 control-label">Body</label>'+
+                              '<div class="col-xs-10">'+ //구문 변동이 필요함 textarea에서는 다르게 값을 가져와야 할 듯
+                                  place_value[2]+
+                              '</div>'+
                           '</div>'+
-                      '</div>'+
-                      '<div class="form-group">'+
-                          '<label for="label_tag" class="col-xs-2 control-label">Tag</label>'+
-                          '<div class="col-xs-10">'+ // required 확인!
-                              '<input type="text" name="tag" class="form-control" '+place_value[3]+' required>'+//<!-- value는 실제 입력 값, placeholder는 예시 값(회색) -->'+
-                          '</div>'+
-                      '</div>'+                          
-                    '</div>'+
+                          '<div class="form-group">'+
+                              '<label for="label_tag" class="col-xs-2 control-label">Tag</label>'+
+                              '<div class="col-xs-10">'+ // required 확인!
+                                  '<input type="text" name="tag" class="form-control" '+place_value[3]+' required>'+//<!-- value는 실제 입력 값, placeholder는 예시 값(회색) -->'+
+                              '</div>'+
+                          '</div>'+                          
+                        '</div>'+
                     '</div>'+
                     '<div class="modal-footer">';
                       //'<p>'+"$ARA"+'</p>';

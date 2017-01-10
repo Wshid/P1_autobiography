@@ -38,7 +38,7 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">Auto-Biography</h3>
+              <h3 class="masthead-brand"><a href="carousel.php">Auto-Biography</a></h3>
               <nav>
                 <ul class="nav masthead-nav">
                   <li class="active"><a href="#link_home">Home</a></li>

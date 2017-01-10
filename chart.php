@@ -5,6 +5,13 @@
   login_check();
   load_block_process(); //여기서 숫자 나옴
   
+/*
+  if(!isset($_SESSION['is_login'])){ //어떻게 해야할까 어떻게..음...
+    echo "로그인 해주세요";
+  }else{
+    echo "Hi!, ".$_SESSION['name']." :)";
+  }*/
+    //echo "<a href='login.php'>로그인 해주세요</a>";
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +33,7 @@
     <!-- Custom styles for this template -->
     <link href="css/block.css" rel="stylesheet">
     <link href="css/columns_l4.css" rel="stylesheet">
-    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <script src="js/vender/jquery-3.1.1.min.js"></script>
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -56,9 +63,9 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse"><!-- id="navbar" -->
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="block.php">Block</a></li>
+                <li class="active"><a href="chart.php">Chart</a></li>
+                <li><a href="word.php">Word</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
@@ -73,12 +80,14 @@
                 </li>
               </ul>
               <ul class="signinCheck">
-                <?php
-                    if(!isset($_SESSION['is_login'])){
-                      //echo "<a href='login.php'>로그인 해주세요</a>";
-                ?>
+                <span class="login_out">
+                  <?php
+                      if(!isset($_SESSION['is_login'])){
+                        //echo "<a href='login.php'>로그인 해주세요</a>";
+                  ?>
+                </span>
                 <span><a class="btn btn-lg btn-theme login_out" href="login.php" role="button">Login</a></span>
-                <span class="signinName">  
+                <span class="signinName login_out">  
                   <?php
                     }
                     else{
@@ -157,20 +166,11 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/vender/jquery-3.1.1.min.js"></script>
     <script src="js/vender/bootstrap.min.js"></script>
     <script src="js/vender/jquery.ba-throttle-debounce.min.js"></script>
     <script src="js/vender/jquery-ui.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/vender/ie10-viewport-bug-workaround.js"></script>
-    
-    <!-- date time -->
-    <script src="js/vender/datetime/bootstrap-datetimepicker.js"></script>
-    <script src="js/vender/datetime/bootstrap-datetimepicker.ko.js"></script>
-    <script src="js/vender/datetime/collapse.js"></script>
-    <script src="js/vender/datetime/moment.js"></script>
-    <script src="js/vender/datetime/transition.js"></script>    
-    
     <script src="js/block.js"></script>
     <script src="js/mk_modal.js"></script>
     <script src="js/input_check.js"></script>
@@ -216,7 +216,7 @@
                     var col3_base=i%3; // 3열 체크시 사용한다.
                     var tag_raw=item.tag;
                     
-                    //console.log(tag_raw);
+                    console.log(tag_raw);
                     var tag="";
                     for(var tag_idx in tag_raw){
                       tag+=tag_raw[tag_idx]+" ";
@@ -273,18 +273,6 @@
             });
             
         }
-        
-        //datetime code
-        $('#datetimepicker6').datetimepicker();
-        $('#datetimepicker7').datetimepicker({
-            useCurrent: false //Important! See issue #1075
-        });
-        $("#datetimepicker6").on("dp.change", function (e) {
-            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-        });
-        $("#datetimepicker7").on("dp.change", function (e) {
-            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-        });        
         
         function box_activing(){  //block.js와 중복됨 //
             $('.columns_l4 .col-md-4').each(function(){

@@ -18,7 +18,11 @@
 }
 
 .columns_l4 .col-md-4 {
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
+  padding:0 0;
+  margin-bottom:10px;
+  border: 2px solid rgba(85,135,237,.5);
+  border-radius: 10px;
   text-align: center;
   cursor: pointer; 
 }
@@ -31,7 +35,7 @@
 
 .row .box_active{
   box-shadow: 0px 0px 10px #000;
-  background-image:linear-gradient(45deg,rgba(204,153,204,.5) 0,rgba(0,0,0,.0001) 100%);;
+  background-image:linear-gradient(45deg,rgba(85,135,237,.5) 0,rgba(0,0,0,.0001) 100%);;
   /* box-shadow : [inset] [h-shadow] [v-shadow] [blur] [spread] */
 }
 

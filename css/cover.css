@@ -7,6 +7,7 @@ a,
 a:focus,
 a:hover {
   color: #fff;
+  text-decoration: none;
 }
 
 /* Custom default button */
@@ -28,7 +29,7 @@ html,
 body {
   height: 100%;
   /*background-color: #333;*/
-  background-image:url('../img/bg.jpg');
+  background-image:url('../img/sky_rainbow.jpg');
 }
 body {
   color: #fff;
