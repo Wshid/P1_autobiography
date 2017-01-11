@@ -30,3 +30,14 @@
 .filter-form label.ui-state-active .ui-icon {
     background-position: -20px 0;
 }
+
+#chart_title{
+    display:block;
+    background-color:#222;
+    text-align:center;
+    color:#777;
+    margin:20px 10px;
+    font-size:15pt; 
+    border-radius:3px;
+    padding:10px;
+}
