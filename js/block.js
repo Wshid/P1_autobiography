@@ -5,36 +5,7 @@ $(function(){
         $row=$('.columns_l4 > .row'),
         $blockContainer=$('.blockContainer');
     //$('.gridContainer').hide(); // 잠시 숨겨놓기로
-    
-    $('.navbar-wrapper').each(function(){
-        var $window=$(window),
-            $header=$(this),
-            $navbarclass=$header.find('#navbar'),
-            $headerClone=$header.contents().clone(),
-            $headerCloneContainer=$('<div class="fixed-header"></div>'),
-            threshold=$header.offset().top+$header.outerHeight();
-        $headerCloneContainer.append($headerClone);
-        $headerCloneContainer.appendTo('body');
-        
-        //console.log($(this).width());
-       
-        $window.on('scroll', $.throttle(1000/15, function(){
-            if($window.scrollTop()>threshold){
-                $headerCloneContainer.addClass('visible');
-                $navbarclass.attr('id', 'not_navbar'); // navbar id를 변경함으로써 navbar-collapse 변경
-            }else{
-                $headerCloneContainer.removeClass('visible');
-                $navbarclass.attr('id', 'navbar');
-            }
-            
-            resizing();
-        }));
-    });
 
-    function resizing(){ // resizing을 해야지 가운데 정렬이 됨
-        var navbarSize=$('.navbar-wrapper').width();
-        $('.fixed-header').width(navbarSize);        
-    }
     
     //버튼을 클릭하면 해당 유저에 해당하는 거를 가져와야함.. 그렇기 위해선 php도 이용해야하고..
     //정확히는 이미 불러와져 있어야 하며, ..

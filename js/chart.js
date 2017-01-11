@@ -1,9 +1,5 @@
 $(function(){
-    $('.filter-form input[type="radio"]').button({
-        icons:{
-            primary:'icon-radio'
-        }
-    });
+
         //alert("Inner JQuery");
     var $blockContainer=$('.blockContainer'),
         line_end=2,
@@ -44,7 +40,7 @@ $(function(){
         function initBlock(data){
             var length=data.length;
 
-            console.log($filter);
+            //console.log($filter);
             allBlock=data;
             filteredBlock=allBlock;
               
@@ -54,7 +50,7 @@ $(function(){
         }
         
         function addBlock(is_filtering){
-            console.log("CALLED addblock");
+            //console.log("CALLED addblock");
             data=filteredBlock; // 구문 수정 필요
     
             $.each(data, function(i, item){
@@ -110,10 +106,12 @@ $(function(){
                 //console.log("IIN");
                 //console.log("VA : "+filter_label[tag_idx]);
                 filter_label_html+=
+                '<div class="radio_button_customize">'+
                   '<span class="form-item">'+
                     '<input type="radio" name="filter" id="filter-'+filter_label[tag_idx]+'" value="'+filter_label[tag_idx]+'">'+
                     '<label for="filter-'+filter_label[tag_idx]+'">'+filter_label[tag_idx]+'</label>'+
-                  '</span>';
+                  '</span>'+
+                '</div>';
               }
               //console.log(filter_label_html);
               $filter.append(filter_label_html); // 실상 .html해도 되지만, 부하를 주지 않기 위함            
@@ -128,7 +126,7 @@ $(function(){
         
         function filterBlock(){ // 구문 추가하는 부분, 추가적인 수정이 필요할 듯
             var key=$(this).val();
-            console.log("CALLED filterBlock");
+            //console.log("CALLED filterBlock");
             filteredBlock=[];
           
             if(key==='all'){
@@ -146,10 +144,16 @@ $(function(){
                 return ret; 
                 });
             }
-            console.log(filteredBlock);
+            //console.log(filteredBlock);
             init_filter();
             addBlock(true); // true라면 tag에 의한 filter 목록을 생성하지 않음
         }
+        /*
+        console.log($('.filter-form').get(0));
+        $('.filter-form label').checkboxradio({
+            icons:false
+        }); // 진행중
+        */
         
         function init_filter(){
             //filter_label=[],
@@ -172,6 +176,11 @@ $(function(){
             });
         });
     }
+    
+    $('input[type=radio]').on('mouseover', function(){ /* 이부분이 먹지 않음 */
+        console.log("ON");
+        $(this).css('background-color','#d8deff'); 
+    });
 
     
  });

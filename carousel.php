@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <?php
   session_start(); // signin_ok와 carousel에서 세션을 열어야 함
-  $carousel=array( /* 일단은 php 구문으로 배열 관리, 추후 jquery로 변환 예정 */
+/*  $carousel=array( // 일단은 php 구문으로 배열 관리, 추후 jquery로 변환 예정 
                 array("This is Sensation!", "Note: If you're viewing this page via a <code>file://</code> URL, the \"next\" and \"previous\" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules."),
                 array("Another example headline.", "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."),
                 array("One more for good measure.", "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."),
                 array("One more for good measure.", "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.")
-                )
+                )*/
 ?>
 <html lang="ko">
   <head>
@@ -21,7 +21,7 @@
     <title>Managing Your Dream</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/vender/bootstrap.min.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -41,64 +41,10 @@
 <!-- NAVBAR
 ================================================== -->
   <body>
-    <div class="navbar-wrapper">
-      <div class="container">
-        <nav class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="carousel.php">AutoBiography</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse"><!-- id="navbar" -->
-              <ul class="nav navbar-nav">
-                <li><a href="block.php">Block</a></li>
-                <li><a href="chart.php">Chart</a></li>
-                <li><a href="word.php">Word</a></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li class="dropdown-header">Nav header</li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <ul class="signinCheck">
-                <span class="login_out">
-                  <?php
-                      if(!isset($_SESSION['is_login'])){
-                        //echo "<a href='login.php'>로그인 해주세요</a>";
-                  ?>
-                </span>
-                <span><a class="btn btn-lg btn-primary login_out" href="login.php" role="button">Login</a></span>
-                <span class="login_out">  
-                  <?php
-                    }
-                    else{
-                      echo "Hi!, ".$_SESSION['name']." :)";
-                  ?>
-                </span>  
-                <span><a id="logout_but" class="btn btn-lg btn-primary login_out" href="logout.php" role="button">Logout</a></span>
-                  <?php
-                    }
-                ?>
-              </ul>
-            </div>
-          </div>
-        </nav>
-
-      </div>
-    </div>
-
+    
+    <!-- header_navbar 집어넣을 부분 -->
+    
+    <span class="header_navbar_prepend"></span>
     <!-- Carousel
     ================================================== -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -114,8 +60,8 @@
           <img class="first-slide" src="img/sky_2.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1><?php echo($carousel[0][0]) ?></h1>
-              <p class="carouselBody"><?php echo($carousel[0][1]) ?></p>
+              <h1></h1>
+              <p class="carouselBody"></p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
             </div>
           </div>
@@ -124,8 +70,8 @@
           <img class="second-slide" src="img/sky_2.jpg" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1><?php echo($carousel[1][0]) ?></h1>
-              <p class="carouselBody"><?php echo($carousel[1][1]) ?></p>
+              <h1></h1>
+              <p class="carouselBody"></p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
             </div>
           </div>
@@ -134,8 +80,8 @@
           <img class="third-slide" src="img/sky_2.jpg" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1><?php echo($carousel[2][0]) ?></h1>
-              <p class="carouselBody"><?php echo($carousel[2][1]) ?></p>
+              <h1></h1>
+              <p class="carouselBody"></p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
             </div>
           </div>
@@ -144,8 +90,8 @@
           <img class="forth-slide" src="img/sky_2.jpg" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1><?php echo($carousel[3][0]) ?></h1>
-              <p class="carouselBody"><?php echo($carousel[3][1]) ?></p>
+              <h1></h1>
+              <p class="carouselBody"></p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
             </div>
           </div>
@@ -171,7 +117,7 @@
     <div class="container columns_l4">
       <div class="row" id="block_direction">
         <div class="col-lg-4">
-          <a href="block.php" class="no-decoration"> <!-- 이동을 하긴 하지만 매우 부자연스러움 -->
+          <a href="#" class="no-decoration"> <!-- 이동을 하긴 하지만 매우 부자연스러움 -->
             <img class="img-circle" src="img/sky_rainbow.jpg" alt="Generic placeholder image" width="140" height="140">
             <h2><!--menu[i][0]--></h2>
             <p class="marketingBody"><!-- jquery --></p>
@@ -179,37 +125,47 @@
           </a>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p class="marketingBody">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <a href="#" class="no-decoration">
+            <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2></h2>
+            <p class="marketingBody"></p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          </a>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p class="marketingBody">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <a href="#" class="no-decoration">
+            <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2></h2>
+            <p class="marketingBody"></p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          </a>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
       
       <div class="row"> <!-- 아래에 3열 추가 총 5개의 grid가 그려져야 함 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p class="marketingBody">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <a href="#" class="no-decoration">
+            <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2></h2>
+            <p class="marketingBody"></p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          </a>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p class="marketingBody">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <a href="#" class="no-decoration">
+            <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2></h2>
+            <p class="marketingBody"></p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          </a>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p class="marketingBody">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <a href="#" class="no-decoration">
+            <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2></h2>
+            <p class="marketingBody"></p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          </a>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
       <!-- FOOTER -->
@@ -233,6 +189,7 @@
     <script src="js/vender/bootstrap.min.js"></script>
     <script src="js/vender/jquery-ui.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="js/header_navbar.js"></script>
     <script src="js/holder.js"></script>
     <script src="js/carousel.js"></script>
     <script src="js/vender/jquery.ba-throttle-debounce.min.js"></script>

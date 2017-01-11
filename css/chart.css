@@ -1,4 +1,106 @@
 .filter-form{
+    float:center;
+}
+
+.filter-form label{
+    margin:0 10px;
+}
+
+
+/* http://viralpatel.net/blogs/css-radio-button-checkbox-background/ 
+input[type=radio]{
+    display:none; 라디오 동그란 버튼을 안보이게 함 
+    margin:10px;
+}
+
+ http://webberstudy.com/html-css/css-2/selector-2/ 
+input[type=radio] + label{  +는 형제중 인접한 것을 의미 
+    display:inline-block;
+    margin:-2px;
+    padding: 4px 12px;
+    background-color: #e7e7e7;
+    border-color: #ddd;
+}
+
+input[type=radio]:checked + label { 
+   background-image: none;
+    background-color:#d0d0d0;
+}
+
+*/
+
+/* 코드 해석 및 수정하기 */
+input[type=radio] {
+	display:none;
+}
+
+input[type=radio] + label {
+	display:inline-block;
+	border-radius: 5px;
+	margin:10px 20px;
+	/*margin:-2px;*/
+	width:90%;
+	height:50px;
+	padding: 13px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	line-height: 20px;
+	color: #333;
+	text-align: center;
+	text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+	vertical-align: middle;
+	cursor: pointer;
+	background-color: #f5f5f5; /* 테두리 관련 */
+	background-image: -moz-linear-gradient(top,#fff,#d4f9f9);
+	background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#d4f9f9));
+	background-image: -webkit-linear-gradient(top,#fff,#d4f9f9);
+	background-image: -o-linear-gradient(top,#fff,#d4f9f9);
+	background-image: linear-gradient(to bottom,#fff,#d4f9f9);
+	background-repeat: repeat-x;
+	border: 1px solid #ccc;
+	border-color: #d4f9f9 #d4f9f9 #bfbfbf;
+	border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+	border-bottom-color: #b3b3b3;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(232,254,255,0.05);
+	-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(232,254,255,0.05);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(232,254,255,0.05);
+}
+
+input[type=radio]:checked + label {
+	   background-image: none;
+	outline: 0;
+	-webkit-box-shadow: inset 0 2px 4px rgba(126,141,229,0.15),0 1px 2px rgba(232,254,255,0.05);
+	-moz-box-shadow: inset 0 2px 4px rgba(126,141,229,0.15),0 1px 2px rgba(232,254,255,0.05);
+	box-shadow: inset 0 2px 4px rgba(126,141,229,0.15),0 1px 2px rgba(232,254,255,0.05);
+		background-color:#d8deff; /* 클릭 되었을 때 내부 색 */
+}
+
+
+
+
+
+
+
+.radio_button_customize{
+    display:inline-block;
+    /*
+    background-color:#333;
+    border-radius:5px;
+    color:#fff;
+    margin-right:5px;
+    padding:5px;
+    margin:5px;
+    text-align:center;*/
+}
+/*
+.radio_button_customize span{
+    margin:0 auto;
+}
+*/
+/*
+.filter-form{
     float:right;
 }
 
@@ -30,7 +132,7 @@
 .filter-form label.ui-state-active .ui-icon {
     background-position: -20px 0;
 }
-
+*/
 #chart_title{
     display:block;
     background-color:#222;
