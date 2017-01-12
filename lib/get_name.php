@@ -1,4 +1,4 @@
 <?php
     session_start();
-    echo $_SESSION['name'];
+    echo json_encode(array('name'=>$_SESSION['name'], 'page'=>$_POST['page']));
 ?>

@@ -100,9 +100,11 @@ textarea{
 /* 왜 못감싸는지 모르겠네.. */
 .form-inner-container{
   margin:10px;
+  
 }
 
 .form-inner-container .form-group{
+  
   /*height:100%;*/
 }
 
@@ -120,6 +122,17 @@ textarea{
   color:white;
 }
 
-#logout_button{
-  margin:100px;
+.form-inner-container label{
+  
+}
+
+.form_operation .modal-body{
+  background:url(../img/sky_2.jpg);
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+  color:#fff;
+}
+
+#modal_form_body_title{
+  margin-bottom:10px;
+  font-size:110%;
 }

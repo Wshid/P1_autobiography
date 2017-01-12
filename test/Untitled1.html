@@ -1,0 +1,505 @@
+<div class="columns_l4">
+	<div class="row">
+		<div class="col-md-4" data-toggle="modal" data-target="#modal_add">
+			<div class="row_inner" id="plus_block">
+				<h3>ADD YOUR BLOCK! :)</h3>
+				<h5>Some Information Required</h5>
+			</div>
+		</div>
+		<div class="modal fade" id="modal_add" tabindex="-1" role="dialog" aria-labelledby="modal_add_Label">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h3 class="modal-title" id="modal_add_Label">ADD YOUR BLOCK! :)</h3>
+					</div>
+					<form class="form_operation" id="form_add">
+						<span id="table_idx" class="in_info">-1</span><span id="modal_name" class="in_info">modal_add</span><span id="operation" class="in_info">add</span>
+						<div class="modal-body">
+							<h5>Some Information Required</h5>
+							<div class="form-inner-container">
+								<div class="form-group">
+									<label for="label_title" class="col-xs-2 control-label">Title</label>
+									<div class="col-xs-10">
+										<input type="text" name="title" class="form-control" placeholder="Title" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_subtitle" class="col-xs-2 control-label">SubTitle</label>
+									<div class="col-xs-10">
+										<input type="text" name="subtitle" class="form-control" placeholder="SubTitle" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_body" class="col-xs-2 control-label">Body</label>
+									<div class="col-xs-10">
+										<textarea class="form-control" name="body" rows=5 id="body" placeholder="Body" required></textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_tag" class="col-xs-2 control-label">Tag</label>
+									<div class="col-xs-10">
+										<input type="text" name="tag" class="form-control" placeholder="Tag" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary button_submit_operation" onclick="return form_submit(form_add);">Save changes</button><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4" data-toggle="modal" data-target="#modal_view_0">
+			<div class="row_inner">
+				<h3>fifthsdfsdv</h3>
+				<h5>subfifthsdvdfzxvcdvs</h5>
+			</div>
+		</div>
+		<div class="modal fade" id="modal_view_0" tabindex="-1" role="dialog" aria-labelledby="modal_view_0_ModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h3 class="modal-title" id="modal_view_0_ModalLabel">fifthsdfsdv</h3>
+						<span id="table_view_idx" class="in_info">5</span><span id="modal_view_name" class="in_info">modal_view_0</span>
+					</div>
+					<div class="modal-body">
+						<h5>subfifthsdvdfzxvcdvs</h5>
+						<p>
+							bodyfifth
+						</p>
+					</div>
+					<div class="modal-footer">
+						<p>
+							#ab #bccx #bcvx
+						</p>
+						<button type="button" class="btn btn-warning" onclick="modify_func(0)">Modify</button><button type="button" class="btn btn-danger" id=button_delete onclick="delete_func(modal_view_0)">Delete</button><button type="submit" class="btn btn-primary">Save changes</button><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal_modify_0" tabindex="-1" role="dialog" aria-labelledby="modal_modify_0_Label">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h3 class="modal-title" id="modal_modify_0_Label">Modify your block</h3>
+					</div>
+					<form class="form_operation" id="form_modify_0">
+						<span id="table_idx" class="in_info">5</span><span id="modal_name" class="in_info">modal_modify_0</span><span id="operation" class="in_info">modify</span>
+						<div class="modal-body">
+							<h5>Please Input below things</h5>
+							<div class="form-inner-container">
+								<div class="form-group">
+									<label for="label_title" class="col-xs-2 control-label">Title</label>
+									<div class="col-xs-10">
+										<input type="text" name="title" class="form-control" value="fifthsdfsdv" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_subtitle" class="col-xs-2 control-label">SubTitle</label>
+									<div class="col-xs-10">
+										<input type="text" name="subtitle" class="form-control" value="subfifthsdvdfzxvcdvs" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_body" class="col-xs-2 control-label">Body</label>
+									<div class="col-xs-10">
+										<textarea class="form-control" name="body" rows=5 id="body" required>bodyfifth</textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_tag" class="col-xs-2 control-label">Tag</label>
+									<div class="col-xs-10">
+										<input type="text" name="tag" class="form-control" value="#ab #bccx #bcvx" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary button_submit_operation" onclick="return form_submit(form_modify_0);">Save changes</button><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4" data-toggle="modal" data-target="#modal_view_1">
+			<div class="row_inner">
+				<h3>sixth</h3>
+				<h5>Sixth is wonderful</h5>
+			</div>
+		</div>
+		<div class="modal fade" id="modal_view_1" tabindex="-1" role="dialog" aria-labelledby="modal_view_1_ModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h3 class="modal-title" id="modal_view_1_ModalLabel">sixth</h3>
+						<span id="table_view_idx" class="in_info">6</span><span id="modal_view_name" class="in_info">modal_view_1</span>
+					</div>
+					<div class="modal-body">
+						<h5>Sixth is wonderful</h5>
+						<p>
+							It is not error!! so I test...
+						</p>
+					</div>
+					<div class="modal-footer">
+						<p>
+							#sixth #ab
+						</p>
+						<button type="button" class="btn btn-warning" onclick="modify_func(1)">Modify</button><button type="button" class="btn btn-danger" id=button_delete onclick="delete_func(modal_view_1)">Delete</button><button type="submit" class="btn btn-primary">Save changes</button><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal_modify_1" tabindex="-1" role="dialog" aria-labelledby="modal_modify_1_Label">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h3 class="modal-title" id="modal_modify_1_Label">Modify your block</h3>
+					</div>
+					<form class="form_operation" id="form_modify_1">
+						<span id="table_idx" class="in_info">6</span><span id="modal_name" class="in_info">modal_modify_1</span><span id="operation" class="in_info">modify</span>
+						<div class="modal-body">
+							<h5>Please Input below things</h5>
+							<div class="form-inner-container">
+								<div class="form-group">
+									<label for="label_title" class="col-xs-2 control-label">Title</label>
+									<div class="col-xs-10">
+										<input type="text" name="title" class="form-control" value="sixth" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_subtitle" class="col-xs-2 control-label">SubTitle</label>
+									<div class="col-xs-10">
+										<input type="text" name="subtitle" class="form-control" value="Sixth is wonderful" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_body" class="col-xs-2 control-label">Body</label>
+									<div class="col-xs-10">
+										<textarea class="form-control" name="body" rows=5 id="body" required>It is not error!! so I test...</textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_tag" class="col-xs-2 control-label">Tag</label>
+									<div class="col-xs-10">
+										<input type="text" name="tag" class="form-control" value="#sixth #ab" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary button_submit_operation" onclick="return form_submit(form_modify_1);">Save changes</button><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="columns_l4">
+	<div class="row">
+		<div class="col-md-4" data-toggle="modal" data-target="#modal_view_2">
+			<div class="row_inner">
+				<h3>first block title</h3>
+				<h5> subtitle is first</h5>
+			</div>
+		</div>
+		<div class="modal fade" id="modal_view_2" tabindex="-1" role="dialog" aria-labelledby="modal_view_2_ModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h3 class="modal-title" id="modal_view_2_ModalLabel">first block title</h3>
+						<span id="table_view_idx" class="in_info">7</span><span id="modal_view_name" class="in_info">modal_view_2</span>
+					</div>
+					<div class="modal-body">
+						<h5> subtitle is first</h5>
+						<p>
+							It is first title body so blablabalblalbal
+						</p>
+					</div>
+					<div class="modal-footer">
+						<p>
+							#first
+						</p>
+						<button type="button" class="btn btn-warning" onclick="modify_func(2)">Modify</button><button type="button" class="btn btn-danger" id=button_delete onclick="delete_func(modal_view_2)">Delete</button><button type="submit" class="btn btn-primary">Save changes</button><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal_modify_2" tabindex="-1" role="dialog" aria-labelledby="modal_modify_2_Label">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h3 class="modal-title" id="modal_modify_2_Label">Modify your block</h3>
+					</div>
+					<form class="form_operation" id="form_modify_2">
+						<span id="table_idx" class="in_info">7</span><span id="modal_name" class="in_info">modal_modify_2</span><span id="operation" class="in_info">modify</span>
+						<div class="modal-body">
+							<h5>Please Input below things</h5>
+							<div class="form-inner-container">
+								<div class="form-group">
+									<label for="label_title" class="col-xs-2 control-label">Title</label>
+									<div class="col-xs-10">
+										<input type="text" name="title" class="form-control" value="first block title" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_subtitle" class="col-xs-2 control-label">SubTitle</label>
+									<div class="col-xs-10">
+										<input type="text" name="subtitle" class="form-control" value=" subtitle is first" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_body" class="col-xs-2 control-label">Body</label>
+									<div class="col-xs-10">
+										<textarea class="form-control" name="body" rows=5 id="body" required>It is first title body so blablabalblalbal</textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_tag" class="col-xs-2 control-label">Tag</label>
+									<div class="col-xs-10">
+										<input type="text" name="tag" class="form-control" value="#first" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary button_submit_operation" onclick="return form_submit(form_modify_2);">Save changes</button><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4" data-toggle="modal" data-target="#modal_view_3">
+			<div class="row_inner">
+				<h3>dsv</h3>
+				<h5>sdf</h5>
+			</div>
+		</div>
+		<div class="modal fade" id="modal_view_3" tabindex="-1" role="dialog" aria-labelledby="modal_view_3_ModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h3 class="modal-title" id="modal_view_3_ModalLabel">dsv</h3>
+						<span id="table_view_idx" class="in_info">11</span><span id="modal_view_name" class="in_info">modal_view_3</span>
+					</div>
+					<div class="modal-body">
+						<h5>sdf</h5>
+						<p>
+							sdfvsdv
+						</p>
+					</div>
+					<div class="modal-footer">
+						<p>
+							#sdf
+						</p>
+						<button type="button" class="btn btn-warning" onclick="modify_func(3)">Modify</button><button type="button" class="btn btn-danger" id=button_delete onclick="delete_func(modal_view_3)">Delete</button><button type="submit" class="btn btn-primary">Save changes</button><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal_modify_3" tabindex="-1" role="dialog" aria-labelledby="modal_modify_3_Label">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h3 class="modal-title" id="modal_modify_3_Label">Modify your block</h3>
+					</div>
+					<form class="form_operation" id="form_modify_3">
+						<span id="table_idx" class="in_info">11</span><span id="modal_name" class="in_info">modal_modify_3</span><span id="operation" class="in_info">modify</span>
+						<div class="modal-body">
+							<h5>Please Input below things</h5>
+							<div class="form-inner-container">
+								<div class="form-group">
+									<label for="label_title" class="col-xs-2 control-label">Title</label>
+									<div class="col-xs-10">
+										<input type="text" name="title" class="form-control" value="dsv" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_subtitle" class="col-xs-2 control-label">SubTitle</label>
+									<div class="col-xs-10">
+										<input type="text" name="subtitle" class="form-control" value="sdf" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_body" class="col-xs-2 control-label">Body</label>
+									<div class="col-xs-10">
+										<textarea class="form-control" name="body" rows=5 id="body" required>sdfvsdv</textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_tag" class="col-xs-2 control-label">Tag</label>
+									<div class="col-xs-10">
+										<input type="text" name="tag" class="form-control" value="#sdf" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary button_submit_operation" onclick="return form_submit(form_modify_3);">Save changes</button><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4" data-toggle="modal" data-target="#modal_view_4">
+			<div class="row_inner">
+				<h3>master</h3>
+				<h5>subtitle</h5>
+			</div>
+		</div>
+		<div class="modal fade" id="modal_view_4" tabindex="-1" role="dialog" aria-labelledby="modal_view_4_ModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h3 class="modal-title" id="modal_view_4_ModalLabel">master</h3>
+						<span id="table_view_idx" class="in_info">14</span><span id="modal_view_name" class="in_info">modal_view_4</span>
+					</div>
+					<div class="modal-body">
+						<h5>subtitle</h5>
+						<p>
+							body master
+						</p>
+					</div>
+					<div class="modal-footer">
+						<p>
+							#master
+						</p>
+						<button type="button" class="btn btn-warning" onclick="modify_func(4)">Modify</button><button type="button" class="btn btn-danger" id=button_delete onclick="delete_func(modal_view_4)">Delete</button><button type="submit" class="btn btn-primary">Save changes</button><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal_modify_4" tabindex="-1" role="dialog" aria-labelledby="modal_modify_4_Label">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h3 class="modal-title" id="modal_modify_4_Label">Modify your block</h3>
+					</div>
+					<form class="form_operation" id="form_modify_4">
+						<span id="table_idx" class="in_info">14</span><span id="modal_name" class="in_info">modal_modify_4</span><span id="operation" class="in_info">modify</span>
+						<div class="modal-body">
+							<h5>Please Input below things</h5>
+							<div class="form-inner-container">
+								<div class="form-group">
+									<label for="label_title" class="col-xs-2 control-label">Title</label>
+									<div class="col-xs-10">
+										<input type="text" name="title" class="form-control" value="master" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_subtitle" class="col-xs-2 control-label">SubTitle</label>
+									<div class="col-xs-10">
+										<input type="text" name="subtitle" class="form-control" value="subtitle" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_body" class="col-xs-2 control-label">Body</label>
+									<div class="col-xs-10">
+										<textarea class="form-control" name="body" rows=5 id="body" required>body master</textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_tag" class="col-xs-2 control-label">Tag</label>
+									<div class="col-xs-10">
+										<input type="text" name="tag" class="form-control" value="#master" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary button_submit_operation" onclick="return form_submit(form_modify_4);">Save changes</button><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="columns_l4">
+	<div class="row">
+		<div class="col-md-4" data-toggle="modal" data-target="#modal_view_5">
+			<div class="row_inner">
+				<h3>dfs</h3>
+				<h5>sv</h5>
+			</div>
+		</div>
+		<div class="modal fade" id="modal_view_5" tabindex="-1" role="dialog" aria-labelledby="modal_view_5_ModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h3 class="modal-title" id="modal_view_5_ModalLabel">dfs</h3>
+						<span id="table_view_idx" class="in_info">18</span><span id="modal_view_name" class="in_info">modal_view_5</span>
+					</div>
+					<div class="modal-body">
+						<h5>sv</h5>
+						<p>
+							asv
+						</p>
+					</div>
+					<div class="modal-footer">
+						<p>
+							#xcv
+						</p>
+						<button type="button" class="btn btn-warning" onclick="modify_func(5)">Modify</button><button type="button" class="btn btn-danger" id=button_delete onclick="delete_func(modal_view_5)">Delete</button><button type="submit" class="btn btn-primary">Save changes</button><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal_modify_5" tabindex="-1" role="dialog" aria-labelledby="modal_modify_5_Label">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h3 class="modal-title" id="modal_modify_5_Label">Modify your block</h3>
+					</div>
+					<form class="form_operation" id="form_modify_5">
+						<span id="table_idx" class="in_info">18</span><span id="modal_name" class="in_info">modal_modify_5</span><span id="operation" class="in_info">modify</span>
+						<div class="modal-body">
+							<h5>Please Input below things</h5>
+							<div class="form-inner-container">
+								<div class="form-group">
+									<label for="label_title" class="col-xs-2 control-label">Title</label>
+									<div class="col-xs-10">
+										<input type="text" name="title" class="form-control" value="dfs" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_subtitle" class="col-xs-2 control-label">SubTitle</label>
+									<div class="col-xs-10">
+										<input type="text" name="subtitle" class="form-control" value="sv" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_body" class="col-xs-2 control-label">Body</label>
+									<div class="col-xs-10">
+										<textarea class="form-control" name="body" rows=5 id="body" required>asv</textarea>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="label_tag" class="col-xs-2 control-label">Tag</label>
+									<div class="col-xs-10">
+										<input type="text" name="tag" class="form-control" value="#xcv" required>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary button_submit_operation" onclick="return form_submit(form_modify_5);">Save changes</button><button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>

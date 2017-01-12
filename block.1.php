@@ -29,14 +29,13 @@
 
     <!-- Bootstrap core CSS -->
     <link href="css/vender/bootstrap.min.css" rel="stylesheet">
-    <!--<link href="css/vender/jquery-ui.css" rel="stylesheet">-->
+
     <!-- Custom styles for this template -->
     <link href="css/block.css" rel="stylesheet">
     <link href="css/header_navbar.css" rel="stylesheet">
     <link href="css/columns_l4.css" rel="stylesheet">
-    <link href="css/chart.css" rel="stylesheet">
+    <link href="css/header_navbar.css" rel="stylesheet">
     <link href="css/menu_tron.css" rel="stylesheet">
-    
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -50,38 +49,57 @@
   </head>
 
   <body>
-
-    <span class="header_navbar_prepend"></span> <!-- header와 fixed-header 관련 -->
+    <span class="header_navbar_prepend"></span>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <h1>Blocks</h1>
+        <p>Block을 이용하여 메모를 체계적으로 정리해 보세요! AutoBiography를 작성하는데에 많은 기반이 될 Block은 당신이 기록한 포트폴리오 그리고 자료를 활용할 수 있는데 가장 기본이 되는 자료입니다.</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
       </div>
     </div>
-    
-    <span id="chart_title">Please Select #Tag</span>
     <div class="container"> <!-- Container가 존재 해야 내부 객체가 정렬이 됨 -->
-
-    <!--<hr style='margin-top: 0px'>-->
-    <form class="filter-form" id="form_filter">
-    <div class="radio_button_customize">
-      <span class="form-item">
-        <input type="radio" name="filter" id="filter-all" value="all" checked>
-        <label for="filter-all">All</label>
-      </span>
-    </form>
-    </div>
-    <hr>
       <div class="blockContainer">
         <!-- jquery로 값이 추가 될 부분 -->
         <!-- 우선 +에 해당하는 블럭을 추가시켜 놓아야함 -->
         <!-- 이 내용들도 JQuery 해야 할 듯한데..
             JQuery객체로 가져오게 되면 완전 태그형으로 변환 되니까 -->
         </div>
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+          Launch demo modal
+      </button>
     </div>
+    <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+              <h3>Text in a modal</h3>
+              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+              <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
+              <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+            </div>
+            <div class="modal-footer">
+              <a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
+      
+                <!-- Generated markup by the plugin -->
+                <div class="tooltip top" role="tooltip">
+                  <div class="tooltip-arrow"></div>
+                  <div class="tooltip-inner">
+                    Some tooltip text!
+                  </div>
+                </div>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <hr>
 
       <footer>
@@ -96,14 +114,14 @@
     <script src="js/vender/jquery-3.1.1.min.js"></script>
     <script src="js/vender/bootstrap.min.js"></script>
     <script src="js/vender/jquery.ba-throttle-debounce.min.js"></script>
-    <!--<script src="js/vender/jquery-ui.js"></script>-->
+    <script src="js/vender/jquery-ui.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/vender/ie10-viewport-bug-workaround.js"></script>
     <script src="js/header_navbar.js"></script>
+    <script src="js/block_chart.js"></script>
+    <script src="js/block.js"></script>
     <script src="js/mk_modal.js"></script>
     <script src="js/input_check.js"></script>
-    <script src="js/block_chart.js"></script>
-    <script src="js/chart.js"></script>
-
+      
   </body>
 </html>

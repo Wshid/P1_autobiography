@@ -111,7 +111,8 @@ function mk_modal_form_string(id, title, body_title, place_value, button_type, t
                      '<span id="modal_name" class="in_info">'+modal_name+'</span>'+// moal name도 전달
                      '<span id="operation" class="in_info">'+operation+'</span>'+ // operation 인자 전달
                     '<div class="modal-body">'+
-                      '<h5>'+body_title+'</h5>'+
+                      //'<h5>'+body_title+'</h5>'+
+                      '<span id="modal_form_body_title" style="display:inline-block">'+body_title+'</span>'+
                       '<div class="form-inner-container">'+
                           '<div class="form-group">'+
                               '<label for="label_title" class="col-xs-2 control-label">Title</label>'+
@@ -187,7 +188,7 @@ function mk_modal_string(id, title, subtitle, body, tag, button_type, table_idx)
                   '<div class="modal-content">'+
                     '<div class="modal-header">'+
                         '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
-                        '<h3 class="modal-title" id='+modal_view_string+'_ModalLabel">'+title+'</h3>'+
+                        '<h3 class="modal-title" id="'+modal_view_string+'_ModalLabel">'+title+'</h3>'+
                         '<span id="table_view_idx" class="in_info">'+table_idx+'</span>'+
                         '<span id="modal_view_name" class="in_info">'+modal_view_string+'</span>'+
                     '</div>'+
@@ -306,6 +307,7 @@ function modal_success(close_modal_name){ // 두개 이상 넘기려 하니까 �
         
         $('#button_close_refresh').on('click',function(){
             location.reload(); // 여기서 리로드
+            // 솔직히 여기서 실행시키는 부분은 DELETE나 ADDBLOCK시의 창임
         });
     }); 
 
