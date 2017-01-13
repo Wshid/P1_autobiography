@@ -30,11 +30,6 @@ body{
   margin-bottom:30px;
 }
 
-.buttonContainer button{
-  text-align:left;
-  text-indent: 10pt;
-}
-
 
 button .title{
   /*position:absolute;*/

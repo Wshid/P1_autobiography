@@ -15,11 +15,11 @@
         // 일단 block 테이블에서 해당 user에 대한 정보를 가져와야한다.
         // 해당 user의 행이 있는지 우선 확인
         // 추후 user_idx를 통해 검사하기로
-        $sql="SELECT * FROM blocks WHERE user='".$name."'";
+        $sql="SELECT * FROM words WHERE user='".$name."'";
         //echo($sql);
         $result=mysqli_query($conn, $sql);
         
-        $blocks=[];
+        $words=[];
         
         while($row=mysqli_fetch_assoc($result)){// 일치한 행이 하나 이상이라면, while문을통해 무언가를 해야할 것
             //$row=mysqli_fetch_assoc($result);
@@ -28,22 +28,22 @@
             $title=$row['title'];
             $subtitle=$row['subtitle'];
             $body=$row['body'];
-            $tag_raw=$row['tag'];
+            $block_raw=$row['block_idx'];
 
-            $tag=explode(",",$tag_raw); // 데이터를 쉼표로 구분
+            $block=explode(",",$block_raw); // 데이터를 쉼표로 구분
             
             //echo("<script>console.log(".$tag[0].");</script>");
-            array_push($blocks, array('user'=>$user, 'user_idx' => $user_idx, 'title'=>$title, 'subtitle'=>$subtitle, 'body'=>$body, 'tag'=>$tag));
+            array_push($words, array('user'=>$user, 'user_idx' => $user_idx, 'title'=>$title, 'subtitle'=>$subtitle, 'body'=>$body, 'blocks'=>$block));
             //print($ret[0]);
         }
         //echo("<br>".json_encode($ret));
         
-        $ret=json_encode($blocks); // encode 화 한다.
+        $ret=json_encode($words); // encode 화 한다.
         
         //$file_path='json/blocks/block_'.$user.'.json';
         
         
-        mk_file_json('block', $name, $ret); // $name과 $user가 동일한 값이 들어갈 듯 싶지만..
+        mk_file_json('word', $name, $ret); // $name과 $user가 동일한 값이 들어갈 듯 싶지만..
             // 여기서 숫자가 리턴됨. 이유가 뭐지?
 
     }

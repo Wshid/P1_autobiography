@@ -1,7 +1,9 @@
 <?php
-    function file_blocks_json($file_name, $contents)
+    function mk_file_json($type, $file_name, $contents)
     {
-        $path='json/blocks/block_'.$file_name.'.json';
+        //echo("type : ".$type);
+        //echo("name : ".$file_name);
+        $path='json/'.$type.'s/'.$type.'_'.$file_name.'.json';
         try{ /* 기존 파일은 지우고, 다시 불러온다. */
             if(file_exists($path)){
                 $fd=unlink($path);

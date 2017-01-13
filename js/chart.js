@@ -1,16 +1,6 @@
 $(function(){
 
         //alert("Inner JQuery");
-    var $blockContainer=$('.blockContainer'),
-        line_end=2,
-        line_start=0;
-    var name, allBlock, filteredBlock;
-    var filter_label=[],
-        filter_label_count=[],
-        all_tag="",
-        filter_label_html="";
-    var $filter=$('#form_filter'); 
-    
         //$blockContainer.append(mk_modal_success("title")); // 필요 없는 부분
     
     $.ajax({
