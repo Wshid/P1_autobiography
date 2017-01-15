@@ -1,6 +1,6 @@
 /* block_chart의 내용 수정 */
 
-function get_word_json(name, page){ 
+function get_word_block_json(name, page){ 
     //console.log("called get_block_json");
     //alert("CALL");
 
@@ -99,7 +99,7 @@ function get_word_json(name, page){
               
               idx_string="modal_view_"+i;
               itemHTML+='<div class="col-md-4">'+//data-toggle="modal" data-target="#'+idx_string+'">'+ /* 버튼 없이도 됨! 이득! :) */
-                          '<div class="row_inner">'+
+                          '<div class="row_inner word_block">'+
                             '<h3>'+item.title+'</h3>'+
                             '<h5>'+item.subtitle+'</h5>'+
                           '</div>'+
@@ -185,7 +185,49 @@ function get_word_json(name, page){
 
         
 }      // get_block_json 마지막 괄호
+
+function get_word_view_edit_json(name, i){
+    var title, subtitle, body, blocks, table_idx;
+    var view_string, edit_string;
+    //console.log("i : "+i);
     
+    var $blockContainer=$('.blockContainer'), // ajax 이후나 지금이나 잡는건 같음
+        $editContainer=$('.editContainer'),
+        $viewContainer=$('.viewContainer');
+    
+    var duration=1000,
+        change_term=500;
+    
+    $.getJSON('json/words/word_'+name+'.json', function(data){ //이거 자체도 AJAX 함수
+        //console.log("data0\n"+data[0].title);
+        title=data[i].title;
+        subtitle=data[i].subtitle;
+        body=data[i].body;
+        blocks=data[i].blocks;
+        table_idx=data[i].user_idx;
+        console.log([title, subtitle, body, blocks]);
+        view_string=mk_word_view_string(i,[title, subtitle, body, blocks], table_idx);
+        edit_string=mk_word_form_string(i, [title, subtitle, body, blocks], table_idx);
+
+        $editContainer.html(edit_string);
+        $viewContainer.html(view_string);
+        
+        console.log($viewContainer);
+        
+        setTimeout(function(){
+            console.log("ON");
+            
+            $blockContainer.removeClass('word_active');
+            $blockContainer.addClass('word_deactive');
+            $viewContainer.addClass('word_active', duration, 'easeInOutElastic');
+            $viewContainer.removeClass('word_deactive');
+        }, change_term);                
+
+    
+        
+    });
+}
+
     
 function box_activing(){  //block.js와 중복됨 //
     $('.columns_l4 .col-md-4').each(function(){

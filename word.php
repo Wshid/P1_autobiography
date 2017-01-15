@@ -29,7 +29,8 @@
 
         <!-- Bootstrap core CSS -->
         <link href="css/vender/bootstrap.min.css" rel="stylesheet">
-
+        <link href="css/vender/jquery-ui.css" rel="stylesheet">
+        
         <!-- Custom styles for this template -->
         <link href="css/block.css" rel="stylesheet">
         <link href="css/header_navbar.css" rel="stylesheet">
@@ -62,14 +63,18 @@
         <div class="container">
             <!-- Container가 존재 해야 내부 객체가 정렬이 됨 -->
 
-            <div class="blockContainer">
+            <div class="blockContainer word_deactive">
                 <!-- jquery로 값이 추가 될 부분 -->
                 <!-- 우선 +에 해당하는 블럭을 추가시켜 놓아야함 -->
                 <!-- 이 내용들도 JQuery 해야 할 듯한데..
             JQuery객체로 가져오게 되면 완전 태그형으로 변환 되니까 -->
             </div>
+            
+            <div class="viewContainer word_deactive">
+                
+            </div>
 
-            <div class="editContainer disabled">
+            <div class="editContainer word_deactive">
                 <button class="btn btn-lg btn-primary LOL">Disabled</button>
             </div>
             <hr>
@@ -85,8 +90,8 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="js/vender/jquery-3.1.1.min.js"></script>
         <script src="js/vender/bootstrap.min.js"></script>
+        <script src="js/vender/jquery-ui.js"></script>
         <script src="js/vender/jquery.ba-throttle-debounce.min.js"></script>
-        <script src="js/vender/jquery-ui.min.js"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="js/vender/ie10-viewport-bug-workaround.js"></script>
         <script src="js/header_navbar.js"></script>
@@ -94,7 +99,7 @@
         <!--<script src="js/block.js"></script>-->
         <script src="js/mk_modal.js"></script>
         <script src="js/input_check.js"></script>
-        <script src="js/word2.js"></script>
+        <script src="js/word2.1.js"></script>
         <script src="js/word.js"></script>
 
     </body>
