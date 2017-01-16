@@ -25,38 +25,57 @@ $(function(){
     //console.log("$edit : "+$editContainer);
     //console.log($blockContainer);
     
-    var duration=1500,
-        change_term=1000;
+    var duration=1000,
+        change_term=500,
+        easing='easeInOutExpo';
     
     
     $blockContainer.each(function(){
         //console.log("AAA"); // 이건 먹힘
         
-        $blockContainer.addClass('word_active', duration, 'linear'); // 아마 버전상의 이유로 지원 안되는것 같음
-        $blockContainer.removeClass('word_deactive');
+        //$blockContainer.addClass('word_active', duration, 'linear'); // 아마 버전상의 이유로 지원 x?
+        $viewContainer.hide();
+        $editContainer.hide();
+        $blockContainer.fadeIn(duration, easing);
         
         $blockContainer.on('click', '.word_block', function(){
-            var id=$(this).index();
-            //console.log("My index is"+$(this).index());
+            //console.log($(this));
+            var id=$('.word_block').index($(this))
+            //console.log("My index is"+id);
             var view_string, edit_string="";
             var ret=get_word_view_edit_json(name, id);
+            
+            $blockContainer.fadeOut(change_term, easing, function(){
+                $viewContainer.fadeIn(duration, easing);
+            });            
+        });
+        
+        $blockContainer.on('click', '.word_add', function(){
+            var edit_string=mk_word_form_string('add', ['Title', 'subTitle', 'Body', 'blocks'], -1);
+            
+            //console.log(edit_string);
+            $editContainer.html(edit_string);
+            $blockContainer.fadeOut(change_term, easing, function(){
+                $editContainer.fadeIn(duration,easing);
+            })
         });
 
     });
     
-    $viewContainer.each(function(){
+    $viewContainer.each(function(){ // view에서 modify와 close 버튼 클릭 시,
         $viewContainer.on('click', '.word_modify', function(){
-            $viewContainer.removeClass('word_active');
-            $viewContainer.addClass('word_deactive');
-            $editContainer.addClass('word_active', duration, 'easeInOutElastic');
-            $editContainer.removeClass('word_deactive');
+            $viewContainer.fadeOut(change_term, easing, function(){
+                $editContainer.fadeIn(duration, easing);
+            });
+            
+            //$editContainer.removeClass('word_deactive');
         });
+        
         $viewContainer.on('click', '.word_close', function(){
-            $viewContainer.removeClass('word_active');
-            $viewContainer.addClass('word_deactive');
-            $blockContainer.addClass('word_active', duration, 'easeInOutElastic');
-            $blockContainer.removeClass('word_deactive');            
-        })
+            $viewContainer.fadeOut(change_term, easing, function(){
+                $blockContainer.fadeIn(duration, easing);  
+            });      
+        });
     });
     
     

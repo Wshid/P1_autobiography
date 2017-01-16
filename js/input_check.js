@@ -9,11 +9,16 @@ function check_submit(form_this){ //일단 가져오긴 하는듯
     
     var title_len, subtitle_len, body_len;
     
-    console.log(form_this);
+    //console.log(form_this);
     
     
-    if(form_this=='form_word'){ // word에서 오는 자료들
-        console.log("form_word_on");
+    //form_this가 객체니까
+    
+    var form_name=form_this.getAttribute('id');
+    
+    //console.log(form_name);
+    if(form_name==='form_word'){ // word에서 오는 자료들
+        //console.log("form_word_on");
         var block_raw=f_a_block.blocks.value;
         regex_title=/^[a-zA-Z0-9가-힣\s_]+$/; // ^로 정규식 시작, $로 정규식의 끝을 나타냄
         regex_subtitle=/^.{1,150}$/;
@@ -27,7 +32,7 @@ function check_submit(form_this){ //일단 가져오긴 하는듯
 
     }
     else{ // mk_modal에서 오는 것들
-        console.log(form_this);
+        //console.log(form_this);
         var tag_raw=f_a_block.tag.value;
         //console.log("TITLE : "+title);
         
@@ -46,8 +51,8 @@ function check_submit(form_this){ //일단 가져오긴 하는듯
 
         // tag 정규식 검사. #으로 시작하여야하며, 1~10자여야 한다.
         for(var tag_idx in tag){
-            console.log(tag[tag_idx]);
-            console.log(!regex_tag.test(tag[tag_idx]));
+            //console.log(tag[tag_idx]);
+            //console.log(!regex_tag.test(tag[tag_idx]));
             if(!regex_tag.test(tag[tag_idx])){
                 alert('Tags Format is #[1~10character]');
                 return false;
@@ -89,50 +94,73 @@ function check_submit(form_this){ //일단 가져오긴 하는듯
 function form_submit(form_this){ // ADD or MODIFY의 경우 form 객체를 가져옴
     //console.log("YEAD");
     console.log("form : "+form_this);
-    /*
+    var form_name=form_this.getAttribute('id');
+    
+    
     if(!check_submit(form_this)){
         return false;
-    }*/
+    }
     var f_a_block=form_this;
     var title=f_a_block.title.value,
         subtitle=f_a_block.subtitle.value, //왜 값을 못찾는다고 뜰까
-        body=f_a_block.body.value,
-        tag=f_a_block.tag.value;
-    
-    $(function(){
-        var table_idx=$(form_this).find('#table_idx').text();
-        var modal_name=$(form_this).find('#modal_name').text();
-        var operation=$(form_this).find('#operation').text();
-        var $form=$(form_this);
-        var ret_data={'table_idx':table_idx, 'modal_name':modal_name, 'operation':operation};
-            // modal_name 넘겨줘서 뭐하려고..?
-        $form.find('[name]').each(function(){ // form안에 name 선언된게 input과 textarea임
-            var $this=$(this),
-                name=$this.attr('name'),
-                value=$this.val();
-                  
-             ret_data[name]=value;            
-        });
+        body=f_a_block.body.value;
         
-        //console.log("IN JQUERY");
-        console.log(ret_data); // 전달 데이터 수집 완료
+        $(function(){
+            var table_idx=$(form_this).find('#table_idx').text();
+            
+            var operation=$(form_this).find('#operation').text();
+            var $form=$(form_this);
+            var ret_data={'table_idx':table_idx, 'operation':operation};
+            
+                // modal_name 넘겨줘서 뭐하려고..?
+            $form.find('[name]').each(function(){ // form안에 name 선언된게 input과 textarea임
+                var $this=$(this),
+                    name=$this.attr('name'),
+                    value=$this.val();
+                ret_data[name]=value;            
+            });
+            
+            if(form_name==="form_word"){
+                $.ajax({
+                    url:"operate_word_process.php",
+                    type:"post",
+                    data:ret_data,
+                    success:function(ret){
+                        console.log("SUCCESSED word_process : "+ret);
+                        modal_success(null);
+                    },
+                    error:function(request, status, error){
+                        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                    }                    
+                });
+            }else{
+             
+                var modal_name=$(form_this).find('#modal_name').text();
+                ret_data['modal_name']=modal_name;
+                
+                $.ajax({ // MODIFY, ADD 시 요청
+                    url:"operate_block_process.php",
+                    type:"post",
+                    data:ret_data,
+                    success:function(ret){ //닫을 이름을 넘겨주던가..?
+                       console.log("SUCCESSED : "+ret);
+                        //ret; //여기서 이제 새로고침 작업만 진행하면 됨
+                        modal_success(modal_name); // mk_modal에서 로드
+                        //location.reload(); // success modal에서 진행하기로!
+                    },
+                    error:function(request, status, error){
+                        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                    }
+                });                
+            }
+            //console.log("IN JQUERY");
+            console.log(ret_data); // 전달 데이터 수집 완료
+           
+
        
-       $.ajax({ // MODIFY, ADD 시 요청
-           url:"operate_block_process.php",
-           type:"post",
-           data:ret_data,
-           success:function(ret){ //닫을 이름을 넘겨주던가..?
-               console.log("SUCCESSED : "+ret);
-               //ret; //여기서 이제 새로고침 작업만 진행하면 됨
-               modal_success(modal_name); // mk_modal에서 로드
-               //location.reload(); // success modal에서 진행하기로!
-           },
-           error:function(request, status, error){
-               console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-           }
-       });
-       
-    });
+        });
+    
+    
     
 }
 

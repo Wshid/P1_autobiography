@@ -144,7 +144,7 @@ function get_block_json(name, page){
 
             
             //if(page==='block'){
-                $blockContainer.append(mk_modal_success("title"));     
+                $blockContainer.append(mk_modal_success("Information", "Operation Block Successed"));     
             //} // SUCCESS 모달 생성, mk_modal에 지정
             box_activing();
           

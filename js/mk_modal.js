@@ -206,17 +206,10 @@ function mk_modal_string(id, title, subtitle, body, tag, button_type, table_idx,
                             break;
                         case "modify_delete":
                            // console.log(modify_func("'+id+'_Modal" , "modify_'+id+'"));
-                            if(modified_type==='modal'){
-                                ret+='<button type="button" class="btn btn-warning" onclick="modify_on_modal('+id+')">Modify</button>'+
-                                    '<button type="button" class="btn btn-danger" id=button_delete onclick="delete_on_modal('+edit_view_string+')">Delete</button>'+
-                                    '<button type="submit" class="btn btn-primary">Save changes</button>'+
-                                    '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
-                            }else{ // modified_type==='new'
-                                ret+='<button type="button" class="btn btn-warning">Modify</button>'+
-                                    '<button type="button" class="btn btn-danger" id="button_delete">Delete</button>'+
-                                    '<button type="submit" class="btn btn-primary">Save changes</button>'+
-                                    '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';                                
-                            }
+                            ret+='<button type="button" class="btn btn-warning" onclick="modify_on_modal('+id+')">Modify</button>'+
+                                '<button type="button" class="btn btn-danger" id=button_delete onclick="delete_on_modal('+edit_view_string+')">Delete</button>'+
+                                '<button type="submit" class="btn btn-primary">Save changes</button>'+
+                                '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
                             break;                            //Modify 버튼을 클릭하게 되면.. 해당 id에 맞는 모달을 호출할 수 있어야함
                         default:
                             //console.log("NOT");
@@ -253,17 +246,17 @@ function modify_on_modal(id){ // 두개 이상 넘기려 하니까 계속 에러
 
 }
 
-function mk_modal_success(title){
+function mk_modal_success(title, body){
     var ret=
     '<div class="modal fade" id="modal_success" tabindex="-1" role="dialog" aria-labelledby="modal_success_label" aria-hidden="true">'+
       '<div class="modal-dialog">'+
         '<div class="modal-content">'+
           '<div class="modal-header">'+
             //'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
-            '<h4 class="modal-title" id="modal_success_label">Modal title</h4>'+
+            '<h4 class="modal-title" id="modal_success_label">'+title+'</h4>'+
           '</div>'+
           '<div class="modal-body">'+
-            '<h5>'+title+' Block Success </h5>'+
+            '<h5>'+body+'</h5>'+
           '</div>'+
           '<div class="modal-footer">'+
             '<button type="button" class="btn btn-default" id="button_close_refresh">Close</button>'+
@@ -279,55 +272,102 @@ function mk_modal_success(title){
 function delete_on_modal(edit_view_string){ // delete의 경우 HTML 객체를 받아옴 
     // table_idx가 필요함
     // 이게 폼형태가 아님, 그냥 객체에서 불러오면 될 듯
+    //var table_idx=$('.table_view_idx').text();
     $(function(){
-        var $modal=$(edit_view_string);
-        var table_idx=$modal.find('#table_view_idx').text();
-        var close_modal_name=$modal.find('#modal_view_name').text();
         
-        var data_format={'table_idx':table_idx, 'operation':'delete'};
-        $.ajax({
-            url:"operate_block_process.php",
-            type:'post',
-            data:data_format,
-            success:function(ret){
-                console.log(ret);
-                modal_success(close_modal_name); //닫을 modal name도 알려줘야 함
-            },
-            error:function(request, status, error){
-               console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-            }
-        });
+        var id=edit_view_string.getAttribute('id');
+        var table_idx, data_format;
+
+        if(id==='word_container'){ // Word에서 나온 Container일때
+    
+            table_idx=$(edit_view_string).find('#table_view_idx').text();
+            console.log("TABLE : "+table_idx);
+            data_format={'table_idx':table_idx, 'operation':'delete'};    
+            $.ajax({
+                url:"operate_word_process.php",
+                type:'post',
+                data:data_format,
+                success:function(ret){
+                    console.log(ret);
+                    modal_success(null); //닫을 modal name도 알려줘야 함
+                },
+                error:function(request, status, error){
+                   console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                }
+            });
+        }else{ // 일반 modal일 때
+            var $modal=$(edit_view_string);
+            var table_idx=$modal.find('#table_view_idx').text();
+            data_format={'table_idx':table_idx, 'operation':'delete'};    
+            var close_modal_name=$modal.find('#modal_view_name').text();
+            $.ajax({
+                url:"operate_block_process.php",
+                type:'post',
+                data:data_format,
+                success:function(ret){
+                    console.log(ret);
+                    modal_success(close_modal_name); //닫을 modal name도 알려줘야 함
+                },
+                error:function(request, status, error){
+                   console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                }
+            }); 
+        }
     });
+
 
     
 }
 
 function modal_success(close_modal_name){ // 두개 이상 넘기려 하니까 계속 에러남, 여기서 처리하기로
-    var close_modal_id='#'+close_modal_name, // 닫을 Modal
-        open_modal='#modal_success' // 새로 띄울 Modal
-    //console.log("MODAL_REAL_NAME : "+open_modal);
-    $(function(){
-       $(close_modal_id).modal('toggle');
-        //$(open_modal).modal('toggle'); //그냥 이렇게 바로 해도 됨
-        setTimeout(function(){
-            $(open_modal).modal('show'); // 1000ms 뒤에 open_modal을 open 한다
-        },500);
-        
-        $('#button_close_refresh').on('click',function(){
-            location.reload(); // 여기서 리로드
-            // 솔직히 여기서 실행시키는 부분은 DELETE나 ADDBLOCK시의 창임
-        });
-    }); 
+    
+    console.log("close modal_name : "+close_modal_name);
+    if(close_modal_name===null || close_modal_name===""){ // 같은 null이어도 string으로 받는경우가 있음
+        var open_modal='#modal_success';
+        $(function(){
+            //$(open_modal).modal('toggle'); //그냥 이렇게 바로 해도 됨
+            setTimeout(function(){
+                $(open_modal).modal('show'); // 1000ms 뒤에 open_modal을 open 한다
+            },500);
+            
+            $('#button_close_refresh').on('click',function(){
+                location.reload(); // 여기서 리로드
+                // 솔직히 여기서 실행시키는 부분은 DELETE나 ADDBLOCK시의 창임
+            });
+        }); 
+    }else{
+        var close_modal_id='#'+close_modal_name, // 닫을 Modal
+            open_modal='#modal_success' // 새로 띄울 Modal
+        //console.log("MODAL_REAL_NAME : "+open_modal);
+        $(function(){
+           $(close_modal_id).modal('toggle');
+            //$(open_modal).modal('toggle'); //그냥 이렇게 바로 해도 됨
+            setTimeout(function(){
+                $(open_modal).modal('show'); // 1000ms 뒤에 open_modal을 open 한다
+            },500);
+            
+            $('#button_close_refresh').on('click',function(){
+                location.reload(); // 여기서 리로드
+                // 솔직히 여기서 실행시키는 부분은 DELETE나 ADDBLOCK시의 창임
+            });
+        }); 
+    }
+
 
 }
 
 // add_or_modify class를 추가하여 작업 시작
 function mk_word_view_string(id, place_value, table_idx) // table_idx는 form 호출시 넘겨줄 값
 {
-    console.log("place_value : "+place_value);
+    //console.log("place_value : "+place_value);
     var ret=
-            '<div class="word_container">'+
-                '<div class="word_view_title">'+
+            '<div class="word_container" id="word_container">'+
+                '<div class="word_title">'+
+                    '<div class="word_title_string">Please Input Some Informations</div>'+
+                    '<span id="table_view_idx" class="in_info">'+table_idx+'</span>'+
+                '</div>'+
+                '<hr>'+
+                '<div class="word_body">'+
                     '<div class="row">'+
                         '<div class="col-md-2">'+
                             '<div class="word_menu">Title</div>'+
@@ -335,10 +375,7 @@ function mk_word_view_string(id, place_value, table_idx) // table_idx는 form �
                         '<div class="col-md-7">'+
                             '<div class="word_value">'+place_value[0]+'</div>'+
                         '</div>'+
-                    '</div>'+
-                    '<span id="table_view_idx" class="in_info">'+table_idx+'</span>'+
-                '</div>'+
-                '<div class="word_body">'+
+                    '</div>'+                
                     '<div class="row">'+
                         '<div class="col-md-2">'+
                             '<div class="word_menu">Subtitle</div>'+
@@ -360,7 +397,7 @@ function mk_word_view_string(id, place_value, table_idx) // table_idx는 form �
                 '<div class="word_footer">'+
                     '<p>'+place_value[3]+'</p>'+
                 '<button type="button" class="btn btn-warning word_modify">Modify</button>'+
-                '<button type="button" class="btn btn-danger" id="button_delete">Delete</button>'+
+                '<button type="button" class="btn btn-danger" id=button_delete onclick="delete_on_modal(word_container)">Delete</button>'+
                 '<button type="button" class="btn btn-default word_close">Close</button>'+
                 '</div>'+
             '</div>';
@@ -411,9 +448,13 @@ function mk_word_form_string(id, place_value, table_idx) // place_value는 1*4 �
         '<div class="word_container">'+
             '<form class="form_operation" id="'+form_name+'">'+ //submit시, 인자로 특정 변수 넘기는게 원활하지 않은ㄷ스 
             /* modify가 설정이 되면, table_idx라는 값을 받아올 수 있어야함 */
-                '<span id="table_idx" class="in_info">'+table_idx+'</span>'+
-                '<span id="operation" class="in_info">'+operation+'</span>'+ // operation 인자 전달
-              //'<h5>'+body_title+'</h5>'+
+                '<div class="word_title">'+
+                    '<div class="word_title_string">Please Input Some Informations</div>'+
+                    '<span id="table_idx" class="in_info">'+table_idx+'</span>'+
+                    '<span id="operation" class="in_info">'+operation+'</span>'+ // operation 인자 전달
+                  //'<h5>'+body_title+'</h5>'+
+                '</div>'+
+                '<hr>'+
                 '<div class="word_body">'+
                     '<div class="form-group">'+
                         '<label for="label_title" class="col-md-1 word_menu">Title</label>'+

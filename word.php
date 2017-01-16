@@ -63,19 +63,18 @@
         <div class="container">
             <!-- Container가 존재 해야 내부 객체가 정렬이 됨 -->
 
-            <div class="blockContainer word_deactive">
+            <div class="blockContainer">
                 <!-- jquery로 값이 추가 될 부분 -->
                 <!-- 우선 +에 해당하는 블럭을 추가시켜 놓아야함 -->
                 <!-- 이 내용들도 JQuery 해야 할 듯한데..
             JQuery객체로 가져오게 되면 완전 태그형으로 변환 되니까 -->
             </div>
             
-            <div class="viewContainer word_deactive">
+            <div class="viewContainer">
                 
             </div>
 
-            <div class="editContainer word_deactive">
-                <button class="btn btn-lg btn-primary LOL">Disabled</button>
+            <div class="editContainer">
             </div>
             <hr>
 

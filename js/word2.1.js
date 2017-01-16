@@ -26,7 +26,7 @@ function get_word_block_json(name, page){
                     '<div class="columns_l4">'+
                         '<div class="row">'+
                           '<div class="col-md-4">'+ // modal 관련 내용 제거
-                            '<div id="plus_block" class="row_inner add_or_modify">'+ /* add_block으로 명명하면 어디선가 충돌이 나는 듯 하다 */
+                            '<div id="plus_block" class="row_inner word_add">'+ /* add_block으로 명명하면 어디선가 충돌이 나는 듯 하다 */
                               '<h3>'+plusTitle+'</h3>'+
                               '<h5>'+plusSub+'</h5>'+
                             '</div>'+
@@ -137,7 +137,7 @@ function get_word_block_json(name, page){
 
             
             //if(page==='block'){
-                $blockContainer.append(mk_modal_success("title"));     
+            $('body').append(mk_modal_success("Information", "Operation words")); // body에 추가함으로써 모든 컨테이너에서 사용가능하도록 한다     
             //} // SUCCESS 모달 생성, mk_modal에 지정
             box_activing();
           
@@ -196,7 +196,8 @@ function get_word_view_edit_json(name, i){
         $viewContainer=$('.viewContainer');
     
     var duration=1000,
-        change_term=500;
+        change_term=500,
+        easing='easeInOutExpo';
     
     $.getJSON('json/words/word_'+name+'.json', function(data){ //이거 자체도 AJAX 함수
         //console.log("data0\n"+data[0].title);
@@ -205,25 +206,12 @@ function get_word_view_edit_json(name, i){
         body=data[i].body;
         blocks=data[i].blocks;
         table_idx=data[i].user_idx;
-        console.log([title, subtitle, body, blocks]);
+        //console.log([title, subtitle, body, blocks]);
         view_string=mk_word_view_string(i,[title, subtitle, body, blocks], table_idx);
         edit_string=mk_word_form_string(i, [title, subtitle, body, blocks], table_idx);
 
         $editContainer.html(edit_string);
         $viewContainer.html(view_string);
-        
-        console.log($viewContainer);
-        
-        setTimeout(function(){
-            console.log("ON");
-            
-            $blockContainer.removeClass('word_active');
-            $blockContainer.addClass('word_deactive');
-            $viewContainer.addClass('word_active', duration, 'easeInOutElastic');
-            $viewContainer.removeClass('word_deactive');
-        }, change_term);                
-
-    
         
     });
 }
