@@ -159,9 +159,94 @@ function form_submit(form_this){ // ADD or MODIFY의 경우 form 객체를 가�
 
        
         });
-    
-    
-    
 }
 
 
+function input_check_delete(modal_this){
+    
+    var $modal=$(modal_this),
+        $form=$(modal_this).find('form'),
+        answer=$form.attr('answer'),
+        input=$form.find('input[name="input_check_delete_string"]').val();
+        
+    console.log("input : "+input);
+    console.log("answer : "+answer);
+    var regex=/^[a-zA-Z0-9가-힣\s_]+$/;
+    
+    if(!regex.test(input)){
+        alert("Don't input special characters");
+        return false;
+    }
+    
+    //console.log("equal : "+(input==answer));
+    if(input!==answer){
+        alert("Please Correct String of Words title");
+        return false;
+    }
+    
+    return true;
+}
+
+function check_delete_submit(modal_this){
+    
+    if(!input_check_delete(modal_this)){
+        return false;
+    }
+        
+    var $modal=$(modal_this),
+        $form=$(modal_this).find('form'),
+        form_name=$form.attr('id');
+    //console.log("name : "+form_name);
+    
+    var modal_name;
+
+    $(function(){
+        var table_idx=$form.find('#table_idx').text();
+        var operation=$form.find('#operation').text();
+        var ret_data={'table_idx':table_idx, 'operation':operation};
+        modal_name=$modal.attr('id');
+            // modal_name 넘겨줘서 뭐하려고..?
+        $form.find('[name]').each(function(){ // form안에 name 선언된게 input과 textarea임
+            var $this=$(this),
+                name=$this.attr('name'),
+                value=$this.val();
+            ret_data[name]=value;            
+        });
+        
+        if(form_name==="form_word_check_delete"){
+            $.ajax({
+                url:"operate_word_process.php",
+                type:"post",
+                data:ret_data,
+                success:function(ret){
+                    console.log("SUCCESSED word_process : "+ret);
+                    modal_success(modal_name);
+                },
+                error:function(request, status, error){
+                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                }                    
+            });
+        }else{
+            modal_name=$form.find('#modal_name').text();
+            ret_data['modal_name']=modal_name;
+            
+            $.ajax({ // MODIFY, ADD 시 요청
+                url:"operate_block_process.php",
+                type:"post",
+                data:ret_data,
+                success:function(ret){ //닫을 이름을 넘겨주던가..?
+                   console.log("SUCCESSED : "+ret);
+                    //ret; //여기서 이제 새로고침 작업만 진행하면 됨
+                    modal_success(modal_name); // mk_modal에서 로드
+                    //location.reload(); // success modal에서 진행하기로!
+                },
+                error:function(request, status, error){
+                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                }
+            });                
+        }
+        //console.log("IN JQUERY");
+        console.log(ret_data); // 전달 데이터 수집 완료
+    });    
+    
+}

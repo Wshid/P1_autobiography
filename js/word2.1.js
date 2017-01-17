@@ -137,7 +137,7 @@ function get_word_block_json(name, page){
 
             
             //if(page==='block'){
-            $('body').append(mk_modal_success("Information", "Operation words")); // body에 추가함으로써 모든 컨테이너에서 사용가능하도록 한다     
+            $('body').append(mk_modal_success("Success", "Operation is Successed")); // body에 추가함으로써 모든 컨테이너에서 사용가능하도록 한다     
             //} // SUCCESS 모달 생성, mk_modal에 지정
             box_activing();
           

@@ -78,7 +78,8 @@
             $sql_delete='DELETE FROM words WHERE user="'.$user.'" AND user_idx="'.$idx.'"';
             $result=mysqli_query($conn, $sql_delete);
             mysqli_close($conn);
-            echo("DELETE COMPLETE");
+            echo($sql_delete);
+            //echo("DELETE COMPLETE");
             break;
         default:
             echo "ERROR";

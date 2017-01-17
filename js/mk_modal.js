@@ -110,6 +110,7 @@ function mk_modal_form_string(id, title, body_title, place_value, button_type, t
                      '<span id="table_idx" class="in_info">'+table_idx+'</span>'+
                      '<span id="modal_name" class="in_info">'+modal_name+'</span>'+// moal name도 전달
                      '<span id="operation" class="in_info">'+operation+'</span>'+ // operation 인자 전달
+                     '<span class="in_info title_answer">'+place_value[0]+'</span>'+
                     '<div class="modal-body">'+
                       //'<h5>'+body_title+'</h5>'+
                       '<span id="modal_form_body_title" style="display:inline-block">'+body_title+'</span>'+
@@ -143,7 +144,7 @@ function mk_modal_form_string(id, title, body_title, place_value, button_type, t
                     '<div class="modal-footer">';
                       //'<p>'+"$ARA"+'</p>';
                       switch(button_type){
-                            case "save_close":
+                            case "save_close":                                                              
                                 ret+='<button type="button" class="btn btn-primary button_submit_operation" onclick="return form_submit('+form_name+');">Save changes</button>'+ // 여기서 설정해야함
                                         '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
                                         
@@ -319,6 +320,78 @@ function delete_on_modal(edit_view_string){ // delete의 경우 HTML 객체를 �
     
 }
 
+function check_delete(object){ // delete의 경우 HTML 객체를 받아옴 
+    // table_idx가 필요함
+    // 이게 폼형태가 아님, 그냥 객체에서 불러오면 될 듯
+    //var table_idx=$('.table_view_idx').text();
+    
+    console.log($(object));
+    var $prepend=$('body').find('.modal_check_delete_prepend');
+    
+    $(function(){
+            
+        //var id=object.getAttribute('id');
+        var answer=$(object).find('.title_answer').text();
+        var table_idx=$(object).find('#table_view_idx').text();
+        //console.log(answer);
+        var modal_html=mk_modal_check_delete(answer, table_idx); //
+        //console.log(modal_html);
+        
+        $prepend.html(modal_html); // body의 특정 위치에 삽입할 수 있도록 함
+
+        //console.log($('body').find(modal_html));
+        setTimeout(function(){ // 꼭 Timeout이라는 Term이 있어야 잘 열림
+            $prepend.find('.modal').modal('show'); 
+            //$(modal_html).modal('show'); // 이것만으로도 자동적으로 body 이후에 추가됨
+        }, 500);
+        /*
+        setTImeout을 통해 show를 하게 되면 자동적으로 body에 객체가 추가됨
+        따라서 prepend와 같이 특정 위치에 추가하고 싶다면, 해당 지역에 html 구문 추가 후,
+        modal을 사용하여 호출하면 됨*/
+    });    
+}
+
+
+function mk_modal_check_delete(answer, table_idx){
+    //console.log("IN CHECK DELETE : "+answer);
+    var modal_name='modal_check_delete',
+        form_name='form_word_check_delete',
+        place_holder=answer;
+    
+    var operation='delete';
+    
+    //console.log("CALLED");
+    // modal에 form이 껴있는 형태
+    var ret=
+    '<div class="modal fade" id="'+modal_name+'" tabindex="-1" role="dialog" aria-labelledby="'+modal_name+'_label" aria-hidden="true">'+
+        '<div class="modal-dialog">'+
+            '<div class="modal-content">'+
+                '<div class="modal-header">'+
+                //'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                    '<h4 class="modal-title" id="'+modal_name+'_label">Really?</h4>'+
+                '</div>'+
+                '<form class="form_check_delete" id="'+form_name+'" answer="'+answer+'">'+
+                    '<span class="in_info" name="answer_string">'+answer+'</span>'+
+                    '<span class="in_info" id="operation">'+operation+'</span>'+
+                    '<span class="in_info" id="table_idx">'+table_idx+'</span>'+
+                    '<div class="modal-body">'+
+                        '<h5>This work will not rollback.\n If yes, Input <code>'+answer+'</code> on bottom box.</h5>'+
+                        '<div class="form-group">'+
+                            '<input type="text" name="input_check_delete_string" class="form-control" placeholder="'+place_holder+'" required>'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="modal-footer">'+
+                        '<button type="button" class="btn btn-primary" onclick="return check_delete_submit('+modal_name+');">Submit</button>'+
+                        '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'+
+                    '</div>'+
+                '</form>'+
+            '</div>'+
+        '</div>'+
+    '</div>';
+    
+    return ret;
+}
+
 function modal_success(close_modal_name){ // 두개 이상 넘기려 하니까 계속 에러남, 여기서 처리하기로
     
     console.log("close modal_name : "+close_modal_name);
@@ -373,7 +446,7 @@ function mk_word_view_string(id, place_value, table_idx) // table_idx는 form �
                             '<div class="word_menu">Title</div>'+
                         '</div>'+
                         '<div class="col-md-7">'+
-                            '<div class="word_value">'+place_value[0]+'</div>'+
+                            '<div class="word_value title_answer">'+place_value[0]+'</div>'+
                         '</div>'+
                     '</div>'+                
                     '<div class="row">'+
@@ -397,7 +470,7 @@ function mk_word_view_string(id, place_value, table_idx) // table_idx는 form �
                 '<div class="word_footer">'+
                     '<p>'+place_value[3]+'</p>'+
                 '<button type="button" class="btn btn-warning word_modify">Modify</button>'+
-                '<button type="button" class="btn btn-danger" id=button_delete onclick="delete_on_modal(word_container)">Delete</button>'+
+                '<button type="button" class="btn btn-danger" id=button_delete onclick="check_delete(word_container)">Delete</button>'+
                 '<button type="button" class="btn btn-default word_close">Close</button>'+
                 '</div>'+
             '</div>';
