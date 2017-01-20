@@ -38,6 +38,7 @@
         <link href="css/header_navbar.css" rel="stylesheet">
         <link href="css/menu_tron.css" rel="stylesheet">
         <link href="css/word.css" rel="stylesheet">
+        <link href="css/aside.css" rel="stylesheet">
         
         <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -64,14 +65,9 @@
             <!-- Container가 존재 해야 내부 객체가 정렬이 됨 -->
 
             <div class="blockContainer">
-                <!-- jquery로 값이 추가 될 부분 -->
-                <!-- 우선 +에 해당하는 블럭을 추가시켜 놓아야함 -->
-                <!-- 이 내용들도 JQuery 해야 할 듯한데..
-            JQuery객체로 가져오게 되면 완전 태그형으로 변환 되니까 -->
             </div>
             
             <div class="viewContainer">
-                
             </div>
 
             <div class="editContainer">
@@ -81,8 +77,39 @@
             
             
             <footer>
-                <p>&copy; Company 2014</p>
+                <p>&copy; Wshid(Sion Kim), 2016.12 - 2017.01</p>
             </footer>
+        </div>
+        <div class="aside_container">
+            <button class="aside_button">
+                <img src="img/btn_open.png">
+            </button>
+            <div class="head_container">
+                <span class="aside_head_title">Search Blocks</span>
+            </div>
+            <hr>
+            <div class="search_container">
+                <form id="aside_form">
+                    <div class="row aside_row">
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <input type="text" name="title" class="form-control" placeholder="#tag, or title" required>    
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="button" class="btn btn-primary btn-sm button_aside_submit" onclick="return aside_function(aside_form)">Search</button>     
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <hr>
+            <div class="aside_list_container">
+                <!-- 해당 되는 블럭을 리스트로 보여 줄 부분 -->
+
+            </div>
+            <div class="aside_view_container" style="display:none;"> <!-- 처음엔 등장하지 않음 -->
+                <!-- 블럭을 클릭했을때, open 되는 블럭이 출력될 부분 -->
+            </div>
         </div>
         <!-- /container -->
 
@@ -100,8 +127,9 @@
         <!--<script src="js/block.js"></script>-->
         <script src="js/mk_modal.js"></script>
         <script src="js/input_check.js"></script>
-        <script src="js/word2.1.js"></script>
+        <script src="js/word_function.js"></script>
         <script src="js/word.js"></script>
+        <script src="js/aside.js"></script>
 
     </body>
 </html>

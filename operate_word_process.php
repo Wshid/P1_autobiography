@@ -8,9 +8,11 @@
     $title=$_POST['title'];
     $subtitle=$_POST['subtitle'];
     $body=$_POST['body'];
+    $blocks_raw=$_POST['blocks'];
     //$tag_raw=$_POST['tag'];
     
     //$tag=str_replace(" ", ",", $tag_raw);
+    $blocks=str_replace(" ",",", $blocks_raw);
 
     try{
         $operation=$_POST['operation'];
@@ -43,7 +45,7 @@
             }
             $add_index+=1;
             
-            $sql_insert="INSERT INTO words(user, user_idx, title, subtitle, body)".
+            $sql_insert="INSERT INTO words(user, user_idx, title, subtitle, body, block_idx)".
                             " VALUES ('".$user."', ".$add_index.", '".$title."', '".$subtitle."', '".$body."')";
             
             //print($sql_insert);

@@ -22,6 +22,10 @@ $(function(){
     var $blockContainer=$('.blockContainer'), // ajax 이후나 지금이나 잡는건 같음
         $editContainer=$('.editContainer'),
         $viewContainer=$('.viewContainer');
+        
+    var $asideContainer=$('.aside_container'),
+        $asideButton=$asideContainer.find('.aside_button'),
+        $asideSubmit=$asideContainer.find('.button_aside_submit');
     //console.log("$edit : "+$editContainer);
     //console.log($blockContainer);
     
@@ -36,6 +40,7 @@ $(function(){
         //$blockContainer.addClass('word_active', duration, 'linear'); // 아마 버전상의 이유로 지원 x?
         $viewContainer.hide();
         $editContainer.hide();
+        $asideContainer.hide();
         $blockContainer.fadeIn(duration, easing);
         
         $blockContainer.on('click', '.word_block', function(){
@@ -57,7 +62,8 @@ $(function(){
             $editContainer.html(edit_string);
             $blockContainer.fadeOut(change_term, easing, function(){
                 $editContainer.fadeIn(duration,easing);
-            })
+                $asideContainer.fadeIn(duration,easing);
+            });
         });
 
     });
@@ -66,6 +72,7 @@ $(function(){
         $viewContainer.on('click', '.word_modify', function(){
             $viewContainer.fadeOut(change_term, easing, function(){
                 $editContainer.fadeIn(duration, easing);
+                $asideContainer.fadeIn(duration, easing);
             });
             
             //$editContainer.removeClass('word_deactive');
@@ -77,6 +84,34 @@ $(function(){
             });      
         });
     });
+    
+    $editContainer.each(function(){
+       $editContainer.on('click', '.word_close', function(){
+            $asideContainer.fadeOut(change_term/2, easing, function(){
+                $editContainer.fadeOut(change_term/2, easing, function(){
+                    $blockContainer.fadeIn(duration, easing);  
+                });      
+
+            });   
+       });
+    });
+    
+    $asideButton.on('click', function(){
+        $asideContainer.toggleClass('open');
+        if($asideContainer.hasClass('open')){
+            $asideContainer.stop(true).animate({
+                right:'0px'
+            }, duration, easing);
+            $asideButton.find('img').attr('src', 'img/btn_close.png');
+        }else{
+            $asideContainer.stop(true).animate({
+                right:'-350px'
+            }, duration, easing);
+            $asideButton.find('img').attr('src', 'img/btn_open.png');
+        }
+    });
+    
+    // aside 버튼 클릭되는건 따른 함수를 아예 구현해서 보내기로
     
     
     /*

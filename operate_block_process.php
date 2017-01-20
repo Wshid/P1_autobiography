@@ -12,7 +12,6 @@
     
     $tag=str_replace(" ", ",", $tag_raw);
     
-
     try{
         $operation=$_POST['operation'];
         $idx=$_POST['table_idx']; // ajax로 받는 데이터, 데이터를 다시 보낼때는 echo를 사용한다
@@ -31,7 +30,7 @@
     switch($operation){
         case("add"):
             $sql_search="SELECT user_idx FROM blocks WHERE user='".$user."'"; // 구문 에러 났었음
-        //print($sql_search);
+            //echo($sql_search);
             $result=mysqli_query($conn, $sql_search);
             
             //$count=mysqli_num_rows($result); // 결과 행의 수를 확인하는 함수
@@ -44,7 +43,7 @@
             
             $sql_insert="INSERT INTO blocks(user, user_idx, title, subtitle, body, tag)".
                             " VALUES ('".$user."', ".$add_index.", '".$title."', '".$subtitle."', '".$body."', '".$tag."')";
-            
+            echo($sql_insert);
             //print($sql_insert);
             
             mysqli_query($conn, $sql_insert);
@@ -87,7 +86,6 @@
     //echo($_SESSION["modal_state"]);
     
     //echo("MODAL : ".$_SESSION['alter_idx']);
-
     
     //echo($user.",".$title.",".$subtitle.",".$body.",".$tag.",".$idx);
     

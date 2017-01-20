@@ -9,6 +9,7 @@ $(function(){
     
     function get_block_json(name){ // 함수가 한번도 불려진 적이 없대..
         
+        console.log('called json');
         $.getJSON('json/blocks/block_'+name+'.json', function(data){
            var elements=""; // 배열이 아닌 string을 사용한다.
            console.log('json/blocks/block_'+name+'.json');
@@ -43,11 +44,13 @@ $(function(){
                             break;
                     }
                 }
+                console.log(itemHTML);
                elements+=itemHTML; // JQuery 객체화를 피하기 : 단순 문자열로 처리한다.
                //console.log(elements); 
                /*for(i=0; i<$(itemHTML).length;i++){
                    elements.push($(itemHTML).get(i)); // 여기 부분에서 원활하게 값을 못가져옴, JQuery 객체화 하면, 임의대로 태그를 완성시킴 
                }*/ // 문제 해결, JQUERY 화를 하지 않음
+               
                
                
             });

@@ -28,7 +28,7 @@
             $title=$row['title'];
             $subtitle=$row['subtitle'];
             $body=$row['body'];
-            $block_raw=$row['block_idx'];
+            $block_raw=$row['block_idx']; //  실제로 index가 들어가있지 않음
 
             $block=explode(",",$block_raw); // 데이터를 쉼표로 구분
             

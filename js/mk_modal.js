@@ -152,7 +152,7 @@ function mk_modal_form_string(id, title, body_title, place_value, button_type, t
                             case "modify_delete":
                                 ret+='<button type="button" class="btn btn-warning button_modify">Modify</button>'+ 
                                         '<button type="button" class="btn btn-danger button_delete">Delete</button>'+
-                                        '<button type="submit" class="btn btn-primary">Save changes</button>'+
+                                        //'<button type="submit" class="btn btn-primary">Save changes</button>'+
                                         '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
                                 break;
                             default:
@@ -193,8 +193,9 @@ function mk_modal_string(id, title, subtitle, body, tag, button_type, table_idx,
                         '<span id="table_view_idx" class="in_info">'+table_idx+'</span>'+
                         '<span id="modal_view_name" class="in_info">'+edit_view_string+'</span>'+
                     '</div>'+
-                  '<div class="modal-body">'+
+                  '<div class="modal-body view_modal-body">'+
                     '<h5>'+subtitle+'</h5>'+
+                    '<hr>'+
                     '<p>'+body+'</p>'+
                   '</div>'+
                   '<div class="modal-footer">'+
@@ -282,14 +283,14 @@ function delete_on_modal(edit_view_string){ // delete의 경우 HTML 객체를 �
         if(id==='word_container'){ // Word에서 나온 Container일때
     
             table_idx=$(edit_view_string).find('#table_view_idx').text();
-            console.log("TABLE : "+table_idx);
+            //console.log("TABLE : "+table_idx);
             data_format={'table_idx':table_idx, 'operation':'delete'};    
             $.ajax({
                 url:"operate_word_process.php",
                 type:'post',
                 data:data_format,
                 success:function(ret){
-                    console.log(ret);
+                    //console.log(ret);
                     modal_success(null); //닫을 modal name도 알려줘야 함
                 },
                 error:function(request, status, error){
@@ -315,8 +316,6 @@ function delete_on_modal(edit_view_string){ // delete의 경우 HTML 객체를 �
             }); 
         }
     });
-
-
     
 }
 
@@ -325,11 +324,11 @@ function check_delete(object){ // delete의 경우 HTML 객체를 받아옴
     // 이게 폼형태가 아님, 그냥 객체에서 불러오면 될 듯
     //var table_idx=$('.table_view_idx').text();
     
-    console.log($(object));
+    //console.log($(object));
     var $prepend=$('body').find('.modal_check_delete_prepend');
     
     $(function(){
-            
+        
         //var id=object.getAttribute('id');
         var answer=$(object).find('.title_answer').text();
         var table_idx=$(object).find('#table_view_idx').text();
@@ -348,6 +347,7 @@ function check_delete(object){ // delete의 경우 HTML 객체를 받아옴
         setTImeout을 통해 show를 하게 되면 자동적으로 body에 객체가 추가됨
         따라서 prepend와 같이 특정 위치에 추가하고 싶다면, 해당 지역에 html 구문 추가 후,
         modal을 사용하여 호출하면 됨*/
+        
     });    
 }
 
@@ -370,7 +370,7 @@ function mk_modal_check_delete(answer, table_idx){
                 //'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
                     '<h4 class="modal-title" id="'+modal_name+'_label">Really?</h4>'+
                 '</div>'+
-                '<form class="form_check_delete" id="'+form_name+'" answer="'+answer+'">'+
+                '<form class="form_operation" id="'+form_name+'" answer="'+answer+'">'+
                     '<span class="in_info" name="answer_string">'+answer+'</span>'+
                     '<span class="in_info" id="operation">'+operation+'</span>'+
                     '<span class="in_info" id="table_idx">'+table_idx+'</span>'+
@@ -394,7 +394,7 @@ function mk_modal_check_delete(answer, table_idx){
 
 function modal_success(close_modal_name){ // 두개 이상 넘기려 하니까 계속 에러남, 여기서 처리하기로
     
-    console.log("close modal_name : "+close_modal_name);
+    //console.log("close modal_name : "+close_modal_name);
     if(close_modal_name===null || close_modal_name===""){ // 같은 null이어도 string으로 받는경우가 있음
         var open_modal='#modal_success';
         $(function(){
@@ -404,7 +404,7 @@ function modal_success(close_modal_name){ // 두개 이상 넘기려 하니까 �
             },500);
             
             $('#button_close_refresh').on('click',function(){
-                location.reload(); // 여기서 리로드
+                location.reload(true); // 여기서 리로드
                 // 솔직히 여기서 실행시키는 부분은 DELETE나 ADDBLOCK시의 창임
             });
         }); 
@@ -550,7 +550,10 @@ function mk_word_form_string(id, place_value, table_idx) // place_value는 1*4 �
                     '<div class="form-group">'+
                         '<label for="label_blocks" class="col-md-1 word_menu">Blocks</label>'+
                         '<div class="col-md-8">'+ // required 확인!
-                            '<input type="text" name="blocks" class="form-control word_value" '+place_value[3]+' required>'+//<!-- value는 실제 입력 값, placeholder는 예시 값(회색) -->'+
+                            '<input type="text" name="blocks" class="form-control word_value word_blocks" '+place_value[3]+' readonly>'+//<!-- value는 실제 입력 값, placeholder는 예시 값(회색) -->'+
+                        '</div>'+
+                        '<div class="col-md-2">'+
+                            '<button type="button" class="btn btn-danger word_blocks_reset">Reset</button>'+
                         '</div>'+
                     '</div>'+
                 '</div>'+
@@ -567,4 +570,187 @@ function mk_word_form_string(id, place_value, table_idx) // place_value는 1*4 �
     
     return ret;
               
+}
+
+
+function aside_function(form){
+    
+    
+    var name="";
+    var $form=$(form);
+    var input=$form.find('input[name="title"]').val();
+    var $listContainer=$('.aside_list_container');
+    var $viewContainer=$('.aside_view_container');
+    var $editContainer=$('.editContainer');
+    
+    var duration=1000,
+        change_term=500,
+        easing='easeInOutExpo';
+    
+    //console.log("input[0] : "+input[0]);
+    
+    //console.log("view : "+$viewContainer);
+    //$viewContainer.hide();
+    
+    if(input[0]==="#"){
+        var type="tag";
+    }else{
+        var type="title";
+    }
+    
+    //console.log("type : "+type);
+    
+    $(function(){
+        $.ajax({ // 수정 필요
+            url:'lib/get_name.php',
+            type:'post',
+            data:{'page':'word'},
+            success:function(ret){
+                console.log("word.js ajax success");
+                //ret는 단순 문자열, json 데이터로 처리해 주어야함
+                ret=JSON.parse(ret);
+                name=ret.name; // 이름 초기화
+                
+                $.getJSON('json/blocks/block_'+name+'.json', function(data){
+                   var elements=[];
+                   
+                   $.each(data, function(i, item){
+                       var innerHTML="";
+                       
+                       if(type==="tag"){
+                           //console.log("tag in");
+                           var tag_raw=item.tag;
+                            for(var tag_idx in tag_raw){
+                                if(tag_raw[tag_idx]===input){
+                                    //console.log("item.tag : "+item.tag);
+                                    innerHTML=
+                                        '<div class="aside_list">'+
+                                            '<span class="in_info view_subtitle">'+item.subtitle+'</span>'+
+                                            '<span class="in_info view_body">'+item.body+'</span>'+
+                                            '<div class="aside_list_block_title view_title">'+item.title+'</div>'+
+                                            '<div class="aside_list_footer">'+
+                                                '<div class="view_tag">'+item.tag+'</div>'
+                                            '</div>'+
+                                        '</div>';
+                                    elements.push($(innerHTML).get(0));
+                                    break;
+                                }
+                            }                           
+                       }else{
+                           if(item.title===input){
+                               innerHTML=
+                                    '<div class="aside_list">'+
+                                        '<span class="in_info view_subtitle">'+item.subtitle+'</span>'+
+                                        '<span class="in_info view_body">'+item.body+'</span>'+
+                                        '<div class="aside_list_block_title view_title">'+item.title+'</div>'
+                                        '<div class="aside_list_footer>'+
+                                            '<span class="view_tag">'+item.tag+'</span>'
+                                        '</div>'+
+                                    '</div>';
+                                elements.push($(innerHTML).get(0));
+                            }
+                        }
+                        
+                        //console.log(innerHTML);
+
+                        
+                       
+                    });
+                    
+                    if(elements.length===0){ // 일치하는 내용이 아무것도 없을때
+                        $listContainer.html('<div class="not_exist_block">not exist block</div>');
+                        var height=$('.aside_list_container').outerHeight(true)
+                                    -$('.head_container').outerHeight(true)
+                                    -$('.search_container').outerHeight(true)
+                                    -$('.not_exist_block').outerHeight(true);
+                        //console.log(height);
+                        $('.not_exist_block').css({'margin-top':height/2+'px'});
+                        //console.log($('.not_exist_block'));
+                    }else{
+                        $listContainer.html(elements);    
+                    }
+                    
+                    $viewContainer.hide();
+                    $listContainer.fadeIn(duration, easing);
+                    
+                    $listContainer.find('.aside_list').on('click', function(){
+                        //console.log("clicked Aside list");
+                        var $this=$(this);
+                        var view_title=$this.find('.view_title').text(),
+                            view_subtitle=$this.find('.view_subtitle').text(),
+                            view_body=$this.find('.view_body').text(),
+                            view_tag=$this.find('.view_tag').text();
+                            
+                        var inner_html=
+                            '<div class="view_con_header">'+view_title+'</div>'+
+                            '<hr>'+
+                            '<div class="view_con_body">'+
+                                '<div class="view_con_subtitle">'+view_subtitle+'</div>'+
+                                '<p class="view_con_in_body">'+view_body+'</p>'+
+                            '</div>'+
+                            '<div class="view_con_footer">'+
+                                '<div class="view_con_tag">'+view_tag+'</div>'+
+                                '<button type="button" class="btn btn-default btn-sm button_aside_add">Add in Word</button>'+
+                            '</div>';
+                        
+                        $viewContainer.html(inner_html);
+                        $listContainer.fadeOut(change_term, function(){
+                            $viewContainer.fadeIn(duration, easing);    
+                        });
+                        
+                        $viewContainer.find('.button_aside_add').on('click', function(){
+                            //console.log("clicked");
+                            var $blocks=$editContainer.find('.word_blocks');
+                            var title=$viewContainer.find('.view_con_header').text(),
+                                tag=$viewContainer.find('.view_con_tag').text();
+                                
+                            var prev=$blocks.val();
+                            var ret=prev+" "+title;
+                            ret.trim();
+                            
+                            $blocks.val(ret);
+                        });
+                    });
+                    
+
+
+                   
+                });
+                
+            },
+            error:function(request, status, error){
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            }
+        });
+        
+        $editContainer.on('click', '.word_blocks_reset', function(){ // RESET 버튼 구현 완료
+           //console.log("clicked reset button");
+           $editContainer.find('.word_blocks').val("");
+        });        
+        
+
+    });    
+
+    
+    /*
+    $.ajax({ // 수정 필요
+        url:'lib/get_name.php',
+        type:'post',
+        data:{'page':null},
+        success:function(ret){
+            console.log("get_name process success");
+            //ret는 단순 문자열, json 데이터로 처리해 주어야함
+            ret=JSON.parse(ret); // 이름 초기화
+            name=ret.name;
+
+            
+        },
+        error:function(request, status, error){
+        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+    });       
+    $.getJSON('json/blocks/block_'+name+'.json', function(data){
+        
+    });*/
+    
 }

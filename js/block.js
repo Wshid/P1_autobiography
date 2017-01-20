@@ -21,7 +21,7 @@ $(function(){
             console.log("block.js ajax success"); // 이렇게하면 데이터 받아 온 후에 실행됨
             ret=JSON.parse(ret);
             //console.log("RET : "+ret); // 잘 받아오
-            //console.log(ret.page);
+            console.log(ret.page);
             get_block_json(ret.name, ret.page);
         },
         error:function(request, status, error){

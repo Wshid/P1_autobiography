@@ -1,0 +1,121 @@
+.aside_container{
+    background-color:rgba(0,0,0,0.8);
+    width:350px;
+    height:70%;
+    top:20%;
+    right:-350px;
+    position:fixed;
+}
+
+.aside_container .aside_button{
+    background-color:rgba(0,0,0,0.8);
+    display:block;
+    position:absolute;
+    top:150px;
+    right:350px;
+    width:52px;
+    height:132px;
+    margin:0;
+    padding:0;
+    border:none;
+}
+
+.aside_container input{
+    margin-left:10px;
+}
+
+.aside_container .button_aside_submit{
+}
+
+.aside_container .search_container{
+    margin:10px 10px auto;
+    /*margin-top: 5px;*/
+}
+
+.aside_container .head_container{
+    margin:10px;
+}
+
+.aside_head_title{
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color:white;
+    font-size:30pt;
+    text-shadow: 1px 1px 3px rgba(255,255,255,.9);
+}
+
+.aside_container hr{
+    margin:5px 0;
+}
+
+.aside_container .aside_row{
+    min-height:0
+}
+
+.aside_container .aside_list_container{
+    width:90%;
+    position:absolute;
+    height:100%;
+    color:white;
+    overflow:auto; /* 내용에 따라 스크롤 생성 */
+}
+
+.aside_list_block{
+    margin:5px auto;
+}
+
+.aside_list_container{
+    margin:5px 20px;
+    /* 여기가 빨리 인식 되야 할텐데 */
+}
+
+.aside_list_container .aside_list{
+    background-color:#777;
+    border: 2px white solid;
+    border-radius:4px;
+    color:white;
+    text-align:center;
+    padding:10px 0;
+    margin:10px auto;
+    cursor:pointer;
+    
+}
+
+.not_exist_block{
+    text-align:center;
+}
+
+.aside_view_container{
+    color:white;
+    margin:20px 10px;
+    border-radius:4px;
+    border:2px white solid;
+    background-color:#777;
+    padding:10px;
+}
+
+.aside_view_container .view_con_header{
+    font-size:25pt;
+    font-family: inherit;
+    font-weight:1000;
+}
+
+.aside_view_container .view_con_subtitle{
+    font-size:18pt;
+    margin-bottom:10px;
+}
+
+.aside_view_container .view_con_footer{
+    text-align:right;
+    margin-top:10px;
+}
+
+.aside_view_container .view_con_tag{
+    margin:5px;
+}
+
+.aside_view_container .button_aside_add{
+    text-align:right;
+    margin:5px;
+}

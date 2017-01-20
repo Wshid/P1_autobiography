@@ -50,6 +50,7 @@
 
   <body>
     <span class="header_navbar_prepend"></span>
+    <span class="modal_check_delete_prepend"></span>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">

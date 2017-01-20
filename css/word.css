@@ -62,6 +62,14 @@
     margin:10px 0;
 }
 
+.word_body input{
+    margin:auto 0;
+}
+
+.word_body textarea{
+    margin:auto 0;
+}
+
 .word_title_string{
     font-size:200%;
     padding:0 10px;
