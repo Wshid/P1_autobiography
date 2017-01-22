@@ -465,13 +465,20 @@ function mk_word_view_string(id, place_value, table_idx) // table_idxëŠ” form í˜
                             '<p class="word_value">'+place_value[2]+'</p>'+
                         '</div>'+
                     '</div>'+
+                    '<div class="row">'+
+                        '<div class="col-md-2">'+
+                            '<div class="word_menu">Blocks</div>'+
+                        '</div>'+
+                        '<div class="col-md-7">'+
+                            '<p class="word_value">'+place_value[3]+'</p>'+
+                        '</div>'+
+                    '</div>'+                    
                 '</div>'+
                 '<hr>'+
                 '<div class="word_footer">'+
-                    '<p>'+place_value[3]+'</p>'+
-                '<button type="button" class="btn btn-warning word_modify">Modify</button>'+
-                '<button type="button" class="btn btn-danger" id=button_delete onclick="check_delete(word_container)">Delete</button>'+
-                '<button type="button" class="btn btn-default word_close">Close</button>'+
+                    '<button type="button" class="btn btn-warning word_modify">Modify</button>'+
+                    '<button type="button" class="btn btn-danger" id=button_delete onclick="check_delete(word_container)">Delete</button>'+
+                    '<button type="button" class="btn btn-default word_close">Close</button>'+
                 '</div>'+
             '</div>';
 
@@ -617,11 +624,11 @@ function aside_function(form){
                    $.each(data, function(i, item){
                        var innerHTML="";
                        
-                       if(type==="tag"){
+                       if(type=="tag"){
                            //console.log("tag in");
                            var tag_raw=item.tag;
                             for(var tag_idx in tag_raw){
-                                if(tag_raw[tag_idx]===input){
+                                if(tag_raw[tag_idx]==input){
                                     //console.log("item.tag : "+item.tag);
                                     innerHTML=
                                         '<div class="aside_list">'+
@@ -637,7 +644,7 @@ function aside_function(form){
                                 }
                             }                           
                        }else{
-                           if(item.title===input){
+                           if(item.title==input){
                                innerHTML=
                                     '<div class="aside_list">'+
                                         '<span class="in_info view_subtitle">'+item.subtitle+'</span>'+

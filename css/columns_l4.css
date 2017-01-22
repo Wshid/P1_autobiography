@@ -6,12 +6,13 @@
   margin-bottom: 20px;
   text-align: center;
   cursor: pointer; 
+  padding:10px 0;
 }
-
+/*
 .columns_l4 h2 {
   font-weight: normal;
 }
-
+*/
 .columns_l4 .col-lg-4 p {
   margin-right: 10px;
   margin-left: 10px;

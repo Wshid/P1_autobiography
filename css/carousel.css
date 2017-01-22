@@ -69,7 +69,7 @@ body {
     width: 26px;
 }
 .back-to-top .label:before {
-    content: url(../img/arrow.png);
+    content: url(../img/arrow_up.png);
     display: inline-block;
     font-size: 0;
     line-height: 0;

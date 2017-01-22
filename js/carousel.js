@@ -13,10 +13,10 @@ $(function(){
                         ['Blank Title', '#', 'Blank Body']];
     
     
-    var carousel=[["This is Sensation!", "Note: If you're viewing this page via a \<code\>file://\<\/code\> URL, the \"next\" and \"previous\" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules."],
-                ["Another example headline.", "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."],
-                ["One more for good measure.", "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."],
-                ["One more for good measure.", "Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit."],
+    var carousel=[["This is Sensation!", "This Page helps you to easily write your autobiography arranging your life from past to future and submitting your attraction side to the company or other organizations."],
+                ["Blocks", "Blocks are fundamental data based on your Autobiography. Please input a memory piece of the flow life. It is based on to be realize the dream, and determine your direction to go forward improvement yourself."],
+                ["Chart", "This section provide some informations filtered same the direction. Take a glance many blocks related each tags. It helps you to write the Autobiography."],
+                ["Words", "Write your Autobiography. This is effective for your life with using the blocks."],
                 ];
     
     /* carousel-caption */ 

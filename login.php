@@ -16,7 +16,9 @@
 
     <!-- Custom styles for this template -->
     <link href="css/login.css" rel="stylesheet">
-
+    <link href="css/cover.css" rel="stylesheet">
+    <link href="css/header_navbar.css" rel="stylesheet">
+    
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="js/vender/ie-emulation-modes-warning.js"></script>
@@ -31,6 +33,24 @@
   </head>
 
   <body>
+    <!--<div class="navbar-wrapper">
+      <div class="container">
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="carousel.php">AutoBiography</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>-->
+    
+              <div class="masthead clearfix">
+                <div class="inner">
+                  <h3 class="masthead-brand"><a href="carousel.php">Auto-Biography</a></h3>
+                </div>
+              </div>
+    
     <div class="bg_wrapper">
       <div class="container">
         <form class="form-signin" method="post" action="login_process.php"> <!--편집 시작 -->
@@ -126,6 +146,7 @@
     <script src="js/vender/jquery-3.1.1.min.js"></script>
     <script src="js/vender/bootstrap.min.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/header_navbar.js"></script>
     
   </body>
 </html>

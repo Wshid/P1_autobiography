@@ -62,7 +62,7 @@
             <div class="carousel-caption">
               <h1></h1>
               <p class="carouselBody"></p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+              <p><a class="btn btn-lg btn-primary" href="login.php" role="button">Login</a></p>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@
             <div class="carousel-caption">
               <h1></h1>
               <p class="carouselBody"></p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+              <p><a class="btn btn-lg btn-primary" href="block.php" role="button">Go to Blocks</a></p>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@
             <div class="carousel-caption">
               <h1></h1>
               <p class="carouselBody"></p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+              <p><a class="btn btn-lg btn-primary" href="chart.php" role="button">Move to Chart</a></p>
             </div>
           </div>
         </div>
@@ -92,7 +92,7 @@
             <div class="carousel-caption">
               <h1></h1>
               <p class="carouselBody"></p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+              <p><a class="btn btn-lg btn-primary" href="word.php" role="button">Write the words</a></p>
             </div>
           </div>
         </div>
@@ -121,28 +121,29 @@
             <img class="img-circle" src="img/sky_rainbow.jpg" alt="Generic placeholder image" width="140" height="140">
             <h2><!--menu[i][0]--></h2>
             <p class="marketingBody"><!-- jquery --></p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
           </a>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <a href="#" class="no-decoration">
-            <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <img class="img-circle" src="img/sky_rainbow.jpg" alt="Generic placeholder image" width="140" height="140">
             <h2></h2>
             <p class="marketingBody"></p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
           </a>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <a href="#" class="no-decoration">
-            <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <img class="img-circle" src="img/sky_rainbow.jpg" alt="Generic placeholder image" width="140" height="140">
             <h2></h2>
             <p class="marketingBody"></p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
           </a>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
       
-      <div class="row"> <!-- 아래에 3열 추가 총 5개의 grid가 그려져야 함 -->
+      <!--
+      <div class="row"> 
         <div class="col-lg-4">
           <a href="#" class="no-decoration">
             <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
@@ -150,7 +151,7 @@
             <p class="marketingBody"></p>
             <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
           </a>
-        </div><!-- /.col-lg-4 -->
+        </div>
         <div class="col-lg-4">
           <a href="#" class="no-decoration">
             <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
@@ -158,7 +159,7 @@
             <p class="marketingBody"></p>
             <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
           </a>
-        </div><!-- /.col-lg-4 -->
+        </div>
         <div class="col-lg-4">
           <a href="#" class="no-decoration">
             <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
@@ -166,12 +167,15 @@
             <p class="marketingBody"></p>
             <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
           </a>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
+        </div>-->
+      </div>
+      
       <!-- FOOTER -->
       <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <hr>
+        <p>Wshid(Sion Kim), 2016.12 - 2017.01</p>
+        <!--<p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>-->
         <div class=buttonWrapper>
           <button type="button" class="back-to-top">
             <span class="label">스크롤</span>

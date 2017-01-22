@@ -12,7 +12,9 @@
     //$tag_raw=$_POST['tag'];
     
     //$tag=str_replace(" ", ",", $tag_raw);
-    $blocks=str_replace(" ",",", $blocks_raw);
+
+    $blocks=str_replace(" ",",", trim($blocks_raw));
+    //echo("$blocks ".$blocks);
 
     try{
         $operation=$_POST['operation'];
@@ -46,7 +48,7 @@
             $add_index+=1;
             
             $sql_insert="INSERT INTO words(user, user_idx, title, subtitle, body, block_idx)".
-                            " VALUES ('".$user."', ".$add_index.", '".$title."', '".$subtitle."', '".$body."')";
+                            " VALUES ('".$user."', ".$add_index.", '".$title."', '".$subtitle."', '".$body."', '".$blocks."')";
             
             //print($sql_insert);
             
@@ -66,7 +68,7 @@
                 return false; // 이 구문까지 필요할까 싶지만
             }
             
-            $sql_update='UPDATE words SET title="'.$title.'", subtitle="'.$subtitle.'", body="'.$body.'" WHERE user="'.$user.'" AND user_idx="'.$idx.'"';
+            $sql_update='UPDATE words SET title="'.$title.'", subtitle="'.$subtitle.'", body="'.$body.'" , block_idx="'.$blocks.'" WHERE user="'.$user.'" AND user_idx="'.$idx.'"';
             //console.log($sql_update);
             
             mysqli_query($conn,$sql_update);

@@ -56,7 +56,7 @@
     <div class="jumbotron">
       <div class="container">
         <h1>Blocks</h1>
-        <p>Block을 이용하여 메모를 체계적으로 정리해 보세요! AutoBiography를 작성하는데에 많은 기반이 될 Block은 당신이 기록한 포트폴리오 그리고 자료를 활용할 수 있는데 가장 기본이 되는 자료입니다.</p>
+        <p>Blocks are fundamental data based on your Autobiography. Please input a memory piece of the flow life. It is based on to be realize the dream, and determine your direction to go forward improvement yourself.</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
       </div>
     </div>
@@ -68,9 +68,8 @@
             JQuery객체로 가져오게 되면 완전 태그형으로 변환 되니까 -->
         </div>
       <hr>
-
       <footer>
-        <p>&copy; Company 2014</p>
+        <p>Wshid(Sion Kim), 2016.12 - 2017.01</p>
       </footer>
     </div> <!-- /container -->
 

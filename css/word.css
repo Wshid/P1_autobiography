@@ -62,12 +62,26 @@
     margin:10px 0;
 }
 
+.word_body .col-md-2{
+    margin-top:5px;
+}
+
 .word_body input{
     margin:auto 0;
 }
 
 .word_body textarea{
     margin:auto 0;
+}
+
+.word_body .col-md-7{
+    margin-top:5px;
+}
+
+.word_body .word_value{
+    min-height:30px;
+    padding:5px 10px;
+    margin:5px 20px;
 }
 
 .word_title_string{

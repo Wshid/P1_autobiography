@@ -77,7 +77,7 @@
             
             
             <footer>
-                <p>&copy; Wshid(Sion Kim), 2016.12 - 2017.01</p>
+                <p>Wshid(Sion Kim), 2016.12 - 2017.01</p>
             </footer>
         </div>
         <div class="aside_container">
@@ -129,7 +129,6 @@
         <script src="js/input_check.js"></script>
         <script src="js/word_function.js"></script>
         <script src="js/word.js"></script>
-        <script src="js/aside.js"></script>
 
     </body>
 </html>

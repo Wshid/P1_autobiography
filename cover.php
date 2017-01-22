@@ -12,7 +12,7 @@
     <title>Cover Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/vender/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/cover.css" rel="stylesheet">
@@ -42,8 +42,8 @@
               <nav>
                 <ul class="nav masthead-nav">
                   <li class="active"><a href="#link_home">Home</a></li>
-                  <li><a href="#link_features">Features</a></li>
-                  <li><a href="#link_contact">Contact</a></li>
+                  <li><a href="#link_features">Dream</a></li>
+                  <li><a href="#link_contact">Vision</a></li>
                 </ul>
               </nav>
             </div>
@@ -68,13 +68,13 @@
               <a href="carousel.php" class="btn btn-lg btn-default">Move out!</a>
             </p>
           </div>
-
+<!--
           <div class="mastfoot">
             <div class="inner">
               <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
             </div>
           </div>
-
+-->
         </div>
 
       </div>

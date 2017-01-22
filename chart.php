@@ -56,8 +56,9 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <h1>Chart</h1>
+        <p>This section provide some informations filtered same the direction.
+Take a glance many blocks related each tags. It helps you to write the Autobiography.</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
       </div>
     </div>
@@ -65,27 +66,26 @@
     <span id="chart_title">Please Select #Tag</span>
     <div class="container"> <!-- Container가 존재 해야 내부 객체가 정렬이 됨 -->
 
-    <!--<hr style='margin-top: 0px'>-->
-    <form class="filter-form" id="form_filter">
-    <div class="radio_button_customize">
-      <span class="form-item">
-        <input type="radio" name="filter" id="filter-all" value="all" checked>
-        <label for="filter-all">All</label>
-      </span>
-    </form>
-    </div>
-    <hr>
+      <!--<hr style='margin-top: 0px'>-->
+      <form class="filter-form" id="form_filter">
+        <div class="radio_button_customize">
+          <span class="form-item">
+            <input type="radio" name="filter" id="filter-all" value="all" checked>
+            <label for="filter-all">All</label>
+          </span>
+        </form>
+        </div>
+      <hr>
       <div class="blockContainer">
         <!-- jquery로 값이 추가 될 부분 -->
         <!-- 우선 +에 해당하는 블럭을 추가시켜 놓아야함 -->
         <!-- 이 내용들도 JQuery 해야 할 듯한데..
             JQuery객체로 가져오게 되면 완전 태그형으로 변환 되니까 -->
-        </div>
-    </div>
+      </div>
+        
       <hr>
-
       <footer>
-        <p>&copy; Company 2014</p>
+        <p>Wshid(Sion Kim), 2016.12 - 2017.01</p>
       </footer>
     </div> <!-- /container -->
 
